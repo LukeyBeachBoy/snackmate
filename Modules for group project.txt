@@ -15,6 +15,7 @@ SERVER + API:
             app.set('view engine','hbs') - so we can inject data into views
             Express.static - so we can have static pages as well
     hbs (Handlebars) - view engine to create dynamic pages
+    crypto-js - allows us to encrypt things in many industry-grade standards
 DATABASE
     mongoDb
         - exe to make the database
@@ -23,4 +24,5 @@ DATABASE
     Mongoose - allows us to abstract our database objects into java-like classes with their own methods and properties
     Postman exe/dmg - allows us to send hhtp requests to our db as if from a browser
     bodyParser - allows us to parse the body of post requests to store new object in the database from the browser
-        
+CLIENT RENDERING
+    AngularJS - data-binding and material interface
