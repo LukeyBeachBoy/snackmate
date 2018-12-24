@@ -16,6 +16,7 @@ SERVER + API:
             Express.static - so we can have static pages as well
     hbs (Handlebars) - view engine to create dynamic pages
     jsonwebtoken - allows us to encrypt user tokens for authentication
+    bcrypt - allows us to salt and hash user passwords
 DATABASE
     mongoDb
         - exe to make the database
