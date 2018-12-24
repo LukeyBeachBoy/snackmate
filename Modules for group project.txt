@@ -15,7 +15,7 @@ SERVER + API:
             app.set('view engine','hbs') - so we can inject data into views
             Express.static - so we can have static pages as well
     hbs (Handlebars) - view engine to create dynamic pages
-    crypto-js - allows us to encrypt things in many industry-grade standards
+    jsonwebtoken - allows us to encrypt user tokens for authentication
 DATABASE
     mongoDb
         - exe to make the database
