@@ -91,18 +91,9 @@ hr {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center; }
-  .userDate div {
-    border-radius: 60px;
-    border: 1px solid #e26d6d;
-    padding: 0.2em; }
-    .userDate div .badge {
-      font-weight: 300;
-      background-color: #e26d6d; }
-    .userDate div p {
-      color: #3f3f3fd1;
-      padding: 0;
-      margin: 0;
-      height: 50%; }
+  .userDate .badge {
+    font-weight: 300;
+    font-size: 1em; }
   .userDate h5 {
     color: #3f3f3fd1;
     padding: 0;

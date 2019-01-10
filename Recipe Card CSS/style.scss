@@ -1,11 +1,4 @@
 @font-face {
-  font-family: TwCenMT;
-  src: url(fonts/tw_cen_mt-webfont.woff);
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
   font-family: TwCenMT-Bold;
   src: url(fonts/tw_cen_mt-bold.TTF);
   font-weight: normal;
@@ -91,26 +84,15 @@ hr {
   object-fit: cover;
   margin-bottom: 0.4em;
 }
+
 .userDate {
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 21% 54% 25%;
   align-items: center;
-
-  div {
-    border-radius: 60px;
-    border: 1px solid $primaryColour;
-    padding: 0.2em;
-    .badge {
-      font-weight: 300;
-      background-color: $primaryColour;
-    }
-    p {
-      color: $darkGrey;
-      padding: 0;
-      margin: 0;
-      height: 50%;
-    }
+  .badge {
+    font-weight: 300;
+    font-size: 1em;
   }
   h5 {
     color: $darkGrey;
