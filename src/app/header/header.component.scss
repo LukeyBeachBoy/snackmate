@@ -1,0 +1,25 @@
+$primaryColour: #e26d6d;
+$darkGrey: #3f3f3fd1;
+
+.header {
+  margin: 0 -15px;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr auto auto;
+  justify-content: center;
+  align-items: center;
+  background-color: $primaryColour;
+  border-bottom: 1.4px solid #1f1f1f47;
+  height: 56px;
+  img {
+    margin-right: 20px;
+    width: 23.1px;
+  }
+  h1 {
+    font-family: 'TwCenMT_Bold';
+    color: white;
+    margin-bottom: 0;
+    margin-left: 48px;
+    font-size: 31px;
+  }
+}
