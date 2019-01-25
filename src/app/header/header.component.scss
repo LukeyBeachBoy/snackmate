@@ -2,6 +2,10 @@ $primaryColour: #e26d6d;
 $darkGrey: #3f3f3fd1;
 $mobileWidth: 450px;
 
+.mobile {
+  float: left;
+  z-index: -10;
+}
 .header {
   margin: 0 -15px;
   display: grid;
@@ -40,8 +44,20 @@ $mobileWidth: 450px;
   background-color: #bc5858;
   overflow-x: hidden;
   transition: 0.5s;
-  padding-top: 60px;
+  padding-top: 45px;
   border-left: 1px solid #00000045;
+  #userArea {
+    flex-direction: row;
+    align-items: center;
+    img {
+      margin-right: 0.5em;
+    }
+  }
+  h4 {
+    font-family: 'TwCenMT';
+    white-space: nowrap;
+    margin: 0;
+  }
   a {
     display: flex !important;
     align-items: center;
@@ -65,6 +81,9 @@ $mobileWidth: 450px;
       transform: scaleX(-1);
     }
   }
+  .navButtons {
+    margin-top: 1.5em;
+  }
   .closeBtn {
     display: block !important;
     position: absolute;
@@ -73,11 +92,35 @@ $mobileWidth: 450px;
     text-align: right;
     transition: 0.5s !important;
   }
+  #profilePic {
+    margin-left: 28px;
+    height: 4em;
+    border-radius: 50px;
+    background: slategrey;
+  }
 }
 
 @media screen and (max-width: $mobileWidth) {
+  .mobile {
+    float: none;
+  }
   .sideMenu {
     padding-top: 15px;
+    #userArea {
+      display: block !important;
+      img {
+        align-self: flex-start;
+        height: 2.7em !important;
+      }
+      h4 {
+        font-size: 1.2em;
+        padding-left: 32px;
+        white-space: nowrap;
+      }
+    }
+    .navButtons {
+      margin-top: 0.5em;
+    }
   }
   .sideMenu a {
     font-size: 18px;

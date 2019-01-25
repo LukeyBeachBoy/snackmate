@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import * as $ from 'jquery';
 
 @Component({
@@ -8,21 +8,37 @@ import * as $ from 'jquery';
 })
 export class HeaderComponent implements OnInit {
   sideBarOpen = false;
+  profilePic = '';
   username = 'Not logged in';
   constructor() {}
 
   ngOnInit() {}
-  toggleSidebar() {
-    if (!this.sideBarOpen) {
-      $('#sideBar').css({ width: '250px' });
-      $('#main').css({ 'margin-left': '250px' });
-      $('#sidebarBtn').css({ transform: 'rotate(90deg)' });
-      this.sideBarOpen = true;
+  @HostListener('window:resize', ['$event'])
+  toggleSidebar($event) {
+    if ($event) {
+      if ($('#sideBar').css('width') === '160px') {
+        $('#sideBar').css({ width: '250px' });
+      } else {
+        $('#sideBar').css({ width: '160px' });
+      }
     } else {
-      $('#sideBar').css({ width: '0' });
-      $('#main').css({ 'margin-left': '0' });
-      $('#sidebarBtn').css({ transform: 'rotate(0)' });
-      this.sideBarOpen = false;
+      if (!this.sideBarOpen) {
+        if ($('.mobile').css('float') === 'none') {
+          $('#sideBar').css({ width: '160px' });
+          $('#main').css({ 'margin-right': '160px' });
+        } else {
+          $('#sideBar').css({ width: '250px' });
+          $('#main').css({ 'margin-right': '250px' });
+        }
+
+        $('#sidebarBtn').css({ transform: 'rotate(90deg)' });
+        this.sideBarOpen = true;
+      } else {
+        $('#sideBar').css({ width: '0' });
+        $('#main').css({ 'margin-left': '0' });
+        $('#sidebarBtn').css({ transform: 'rotate(0)' });
+        this.sideBarOpen = false;
+      }
     }
   }
 }
