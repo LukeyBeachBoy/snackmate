@@ -10,9 +10,9 @@ export class FeedComponent implements OnInit {
     // An array to store recipes fetched from API
     {
       name: 'American Burger',
-      pic: '../../assets/foodPics/burger-cropped.jpg',
+      pic: 'assets/foodPics/burger-cropped.jpg',
       author: 'Matt Davidson',
-      authorPic: '../../assets/authorPics/talin.jpg',
+      authorPic: 'assets/authorPics/talin.jpg',
       description: `A classic American
       style burger with roast chicken,
       onions, tomatoes and mayo.`,
@@ -28,9 +28,9 @@ export class FeedComponent implements OnInit {
     },
     {
       name: 'Homemade Lasagne',
-      pic: '../../assets/foodPics/Lasagne.jpg',
+      pic: 'assets/foodPics/Lasagne.jpg',
       author: 'Joseph Martinez',
-      authorPic: '../../assets/authorPics/jeff.jpg',
+      authorPic: 'assets/authorPics/jeff.jpg',
       description: `Lasagne, or the singular lasagna, commonly
        refers to a culinary dish made with stacked layers of pasta
        alternated with sauces and ingredients such as meats, vegetables
@@ -49,9 +49,9 @@ export class FeedComponent implements OnInit {
     },
     {
       name: 'Delicious Tofu',
-      pic: '../../assets/foodPics/Tofu.jpg',
+      pic: 'assets/foodPics/Tofu.jpg',
       author: 'Olive Williams',
-      authorPic: '../../assets/authorPics/girl.jpg',
+      authorPic: 'assets/authorPics/girl.jpg',
       description: `A classic American
       style burger with roast chicken,
       onions, tomatoes and mayo.`,
@@ -67,9 +67,9 @@ export class FeedComponent implements OnInit {
     },
     {
       name: 'Breakfast Pizza',
-      pic: '../../assets/foodPics/Pizza.jpg',
+      pic: 'assets/foodPics/Pizza.jpg',
       author: 'Tom Stevens',
-      authorPic: '../../assets/authorPics/coolguy.jpg',
+      authorPic: 'assets/authorPics/coolguy.jpg',
       description: `A classic American
       style burger with roast chicken,
       onions, tomatoes and mayo.`,
