@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, Output } from '@angular/core';
+import { Component, OnInit, HostListener, Output, Input } from '@angular/core';
 import * as $ from 'jquery';
 import { Subject, Observable } from 'rxjs';
 import { SidebarService } from '../sidebar.service';
@@ -10,17 +10,27 @@ import { EventEmitter } from 'events';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
+  @Input() user = {
+    username: 'Not logged in',
+    profilePic: '',
+    logged: false
+  };
   sidebarOpen = false;
-  profilePic = '';
-  username = 'Not logged in';
+
   constructor(private sidebar: SidebarService) {}
 
   @HostListener('window:resize', ['$event'])
   resizeMenu($event) {
-    if ($event) {
-      if ($('.mobile').css('float') === 'none') {
+    /**
+     * Check the 'mobile' class to see if the screen size
+     * is 160px
+     */
+    if ($('.mobile').css('float') === 'none') {
+      if (this.sidebarOpen) {
         $('#sideBar').css({ width: '160px' });
-      } else {
+      }
+    } else {
+      if (this.sidebarOpen) {
         $('#sideBar').css({ width: '250px' });
       }
     }
@@ -50,7 +60,6 @@ export class SidebarComponent implements OnInit {
       }
     });
   }
-
   onClose() {
     this.sidebar.toggleSideBar();
   }

@@ -3,7 +3,9 @@ $mobileWidth: 450px;
 #sidebarBtn {
   transition: transform 0.3s ease-in-out;
 }
-
+/*
+* This class will have these properties when in desktop mode.
+*/
 .mobile {
   float: left;
   z-index: -10;
@@ -20,7 +22,7 @@ $mobileWidth: 450px;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 45px;
-  border-left: 1px solid #00000045;
+
   #userArea {
     flex-direction: row;
     align-items: center;
@@ -67,12 +69,14 @@ $mobileWidth: 450px;
     width: 100%;
     text-align: right;
     transition: 0.5s !important;
+    i {
+      width: 112px;
+    }
   }
+
   #profilePic {
     margin-left: 28px;
     height: 4em;
-    border-radius: 50px;
-    background: slategrey;
   }
 }
 
@@ -80,25 +84,39 @@ $mobileWidth: 450px;
   .mobile {
     float: none;
   }
+  .closeBtn {
+    i {
+      width: 108px !important;
+    }
+  }
   .sideMenu {
     padding-top: 15px;
     #userArea {
-      display: block !important;
+      margin-top: 1.2em;
+      flex-direction: column;
+      align-items: center;
+      width: 160px;
       img {
-        align-self: flex-start;
-        height: 2.7em !important;
+        margin-left: 0;
+        margin-right: 0;
+        height: 5em !important;
       }
       h4 {
-        font-size: 1.2em;
-        padding-left: 32px;
+        font-size: 1.4em;
+        padding-left: 0;
         white-space: nowrap;
       }
     }
     .navButtons {
       margin-top: 0.5em;
+      a {
+        width: 160px;
+        justify-content: center;
+        padding: 12px;
+      }
     }
   }
   .sideMenu a {
-    font-size: 18px;
+    font-size: 26px;
   }
 }
