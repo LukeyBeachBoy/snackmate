@@ -1,62 +1,10 @@
-@font-face {
-  font-family: TwCenMT-Bold;
-  src: url(fonts/tw_cen_mt-bold.TTF);
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: TwCenMT-Condensed;
-  src: url(fonts/TCCM____.TTF);
-  font-weight: normal;
-  font-style: normal;
-}
-
-// Variables
-
 $primaryColour: #e26d6d;
 $darkGrey: #3f3f3fd1;
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  height: 100%;
-}
-
-.container-fluid {
-  height: 100%;
-  padding: 0;
-  background-color: #f3f3f3;
-}
+$mobileWidth: 450px;
 
 hr {
   margin-top: 0.4rem;
 }
-
-.titlebar {
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: 1fr auto auto;
-  justify-content: center;
-  align-items: center;
-  background-color: $primaryColour;
-  border-bottom: 1.4px solid #00000047;
-  height: 56px;
-  img {
-    margin-right: 20px;
-    width: 23.1px;
-  }
-  h1 {
-    font-family: TwCenMT-Bold;
-    color: white;
-    margin-bottom: 0;
-    margin-left: 48px;
-    font-size: 31px;
-  }
-}
-
 .recipeCard {
   display: flex;
   flex-direction: column;
@@ -64,7 +12,7 @@ hr {
   margin-top: 24px;
   margin-bottom: 24px;
   background-color: white;
-  font-family: TwCenMT-Condensed;
+  font-family: 'TwCenMT';
   border-radius: 15px;
   .recipeHeader {
     border-radius: 15px 15px 0 0;
@@ -81,6 +29,7 @@ hr {
   }
 }
 #recipePic {
+  height: 11.1em;
   object-fit: cover;
   margin-bottom: 0.4em;
 }
@@ -88,7 +37,7 @@ hr {
 .userDate {
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 21% 54% 25%;
+  grid-template-columns: 26% 50% 24%;
   align-items: center;
   .badge {
     font-weight: 300;
@@ -103,26 +52,38 @@ hr {
 
   #userPic {
     border-radius: 360px;
-    height: 56.98px;
+    height: 65.98px;
+    width: 65.98px;
+    object-fit: cover;
   }
 }
 
 .recipeBody {
   padding: 0 1.2em;
 }
-
+#readMore {
+  position: relative;
+  bottom: 14.5px;
+  left: 1px;
+  color: #e8876b;
+}
 #wrapper {
   display: grid;
   grid-template-columns: 62% 38%;
-  grid-template-rows: auto auto;
+  grid-template-rows: 7.3em auto;
   grid-template-areas:
     'description nutrition'
     'allergens nutrition';
   .description {
     grid-area: description;
     color: $darkGrey;
+    overflow: hidden;
     h5 {
       color: $primaryColour;
+    }
+    #recipeDescription {
+      height: 65.5px;
+      overflow: hidden;
     }
   }
   .allergens {
@@ -142,7 +103,7 @@ hr {
     justify-self: right;
     flex-direction: column;
     align-items: flex-end;
-    justify-content: end;
+    justify-content: flex-end;
     ul {
       margin: 0 0.5em;
       padding: 0;
@@ -166,10 +127,9 @@ hr {
     }
   }
 }
-
 #uploadedTime {
   font-weight: 200;
-  font-family: TWCenMT-Condensed;
+  font-family: 'TWCenMT';
   font-size: 1em;
   text-align: right;
   grid-area: nutrition;
@@ -177,7 +137,6 @@ hr {
   margin: 0;
   color: $darkGrey;
 }
-
 .recipeFooter {
   display: grid;
   grid-template-columns: 20% 80%;
@@ -207,9 +166,34 @@ hr {
         margin-left: 5px;
       }
     }
+    .likes {
+      img {
+        cursor: pointer;
+      }
+    }
+    .comments {
+      img {
+        cursor: pointer;
+      }
+    }
   }
 }
 #footerLine {
   margin: 0.1em -1.2em;
   border: 1px solid#0000000d;
+}
+@media screen and (max-width: $mobileWidth) {
+  .recipeBody {
+    padding: 0.2em;
+    hr {
+      margin: 0.5em -0.2em;
+    }
+    #footerLine {
+      margin: 0.1em -0.2em;
+    }
+  }
+  #wrapper {
+    grid-template-columns: 60% 40%;
+    padding: 0.4em;
+  }
 }

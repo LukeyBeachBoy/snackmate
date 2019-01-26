@@ -41,10 +41,8 @@ export class SidebarComponent implements OnInit {
       if (!this.sidebarOpen) {
         if ($('.mobile').css('float') === 'none') {
           $('#sideBar').css({ width: '160px' });
-          $('#main').css({ 'margin-right': '160px' });
         } else {
           $('#sideBar').css({ width: '250px' });
-          $('#main').css({ 'margin-right': '250px' });
         }
 
         $('#sidebarBtn').css({
@@ -54,13 +52,13 @@ export class SidebarComponent implements OnInit {
         this.sidebarOpen = true;
       } else {
         $('#sideBar').css({ width: '0' });
-        $('#main').css({ 'margin-left': '0' });
         $('#sidebarBtn').css({ transform: 'rotate(0)' });
         this.sidebarOpen = false;
       }
     });
   }
-  onClose() {
+  onClose($event) {
+    event.preventDefault();
     this.sidebar.toggleSideBar();
   }
 }

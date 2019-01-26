@@ -1,0 +1,63 @@
+<div class="recipeCard mx-auto">
+  <div class="recipeHeader"><h6>American Burger</h6></div>
+  <img id="recipePic" class="img-fluid" src="{{ recipe.pic || '' }}" alt="" />
+  <div class="recipeBody">
+    <div class="userDate">
+      <img class="img-fluid" id="userPic" src="{{ recipe.authorPic }}" alt="" />
+      <h5>{{ recipe.author }}</h5>
+      <span class="badge badge-primary badge-pill"
+        >{{ recipe.nutrition.calories }} Calories</span
+      >
+    </div>
+    <hr />
+    <div id="wrapper">
+      <div class="description">
+        <h5>Description</h5>
+        <p id="recipeDescription">{{ recipe.description }}</p>
+        <p class="small" id="readMore">Read more</p>
+      </div>
+      <div class="allergens">
+        <h5>Allergens</h5>
+        <p>Nutrition Genie found 3 possible allergens.</p>
+      </div>
+      <div class="nutritionGenie">
+        <h5>Nutrition Genie</h5>
+        <ul>
+          <li class="d-flex justify-content-between align-items-center">
+            Protein:
+            <span class="badge badge-primary badge-pill">{{
+              recipe.nutrition.protein
+            }}</span>
+          </li>
+          <li class="d-flex justify-content-between align-items-center">
+            Carbs:
+            <span class="badge badge-primary badge-pill">{{
+              recipe.nutrition.carbs
+            }}</span>
+          </li>
+          <li class="d-flex justify-content-between align-items-center">
+            Fat:
+            <span class="badge badge-primary badge-pill">{{
+              recipe.nutrition.fat
+            }}</span>
+          </li>
+        </ul>
+      </div>
+      <p id="uploadedTime">{{ recipe.uploaded }}</p>
+    </div>
+    <hr id="footerLine" />
+    <div class="recipeFooter">
+      <button class="btn btn-danger">Full View</button>
+      <div class="social">
+        <div class="likes">
+          <img src="../../assets/heart.png" alt="" />
+          <p class="small">{{ recipe.likes }}</p>
+        </div>
+        <div class="comments">
+          <img src="../../assets/comments.png" alt="" />
+          <p class="small">{{ recipe.comments }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
