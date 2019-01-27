@@ -150,7 +150,7 @@ hr {
   .social {
     display: flex;
     flex-direction: row;
-    justify-self: end;
+    justify-self: flex-start;
     div {
       display: flex;
       flex-direction: row;
@@ -190,6 +190,10 @@ hr {
     }
     #footerLine {
       margin: 0.1em -0.2em;
+    }
+    .userDate {
+      padding: 0 0.4em;
+      grid-template-columns: 26% 47% 27%;
     }
   }
   #wrapper {
