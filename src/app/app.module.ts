@@ -7,9 +7,10 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 import { FeedComponent } from './feed/feed.component';
+import { RecipeBuilderComponent } from './recipe-builder/recipe-builder.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, SidebarComponent, RecipeCardComponent, FeedComponent],
+  declarations: [AppComponent, HeaderComponent, SidebarComponent, RecipeCardComponent, FeedComponent, RecipeBuilderComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]
