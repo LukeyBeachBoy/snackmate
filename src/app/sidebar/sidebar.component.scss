@@ -15,7 +15,7 @@ $mobileWidth: 450px;
   height: 100%;
   width: 0;
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   top: 0;
   right: 0;
   background-color: #ba4444;
@@ -37,6 +37,7 @@ $mobileWidth: 450px;
     }
   }
   a {
+    white-space: nowrap;
     display: flex !important;
     align-items: center;
     padding: 8px;
