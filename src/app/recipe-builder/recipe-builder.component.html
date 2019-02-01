@@ -1,11 +1,7 @@
 <h1 class="display-1 text-center">Recipe builder</h1>
-<form
-  action="http://localhost:3000/recipe/"
-  method="post"
-  enctype="multipart/form-data"
->
-  <input type="file" name="avatar" />
-  <button class="btn btn-primary" (click)="onImageSelect($event)">
-    Create!
+<form action="" method="post" enctype="multipart/form-data">
+  <input type="file" name="image" (change)="onImageSelect($event)" />
+  <button type="button" class="btn btn-primary" (click)="onUpload()">
+    Upload
   </button>
 </form>
