@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recipe-builder.component.scss']
 })
 export class RecipeBuilderComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  onImageSelect(event) {
+    event.preventDefault();
+    console.log(event);
   }
+  constructor() {}
 
+  ngOnInit() {}
 }
