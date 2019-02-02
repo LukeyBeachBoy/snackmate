@@ -57,6 +57,9 @@ export class SidebarComponent implements OnInit {
       }
     });
   }
+  onNav() {
+    this.sidebar.toggleSideBar();
+  }
   onClose($event) {
     event.preventDefault();
     this.sidebar.toggleSideBar();
