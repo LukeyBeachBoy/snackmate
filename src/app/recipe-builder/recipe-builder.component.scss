@@ -10,6 +10,10 @@ $mobileWidth: 450px;
   font-family: TwCenMT_Bold;
 }
 
+.alert {
+  transition: 1s;
+}
+
 label {
   font-family: TWCenMT;
   color: $darkGrey;
@@ -24,6 +28,12 @@ input {
     width: 50%;
   }
 }
+
+.invalid-input {
+  border: 1px solid $primaryColour;
+  transition: 1s;
+}
+
 .imageArea {
   display: flex;
   flex-direction: column;
@@ -33,6 +43,14 @@ input {
     width: 326px;
     height: 207px;
     background-color: $darkGrey;
+  }
+  #deletePic {
+    position: relative;
+    bottom: 5em;
+    font-size: 2.7em;
+    left: 3.5em;
+    color: #e36664;
+    cursor: pointer;
   }
 }
 
@@ -53,6 +71,10 @@ input {
     margin: 0.5em;
     width: 40%;
   }
+}
+
+.repositionButton {
+  margin-top: -43.2px !important;
 }
 
 @media screen and (max-width: $mobileWidth) {

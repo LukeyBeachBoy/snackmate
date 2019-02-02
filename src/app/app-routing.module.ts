@@ -5,7 +5,8 @@ import { RecipeBuilderComponent } from './recipe-builder/recipe-builder.componen
 
 const routes: Routes = [
   { path: '', component: FeedComponent },
-  { path: 'create', component: RecipeBuilderComponent }
+  { path: 'new-recipe', component: RecipeBuilderComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

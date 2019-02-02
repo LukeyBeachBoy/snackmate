@@ -1,15 +1,28 @@
 <h1 class="title text-center text-white">RECIPE BUILDER</h1>
 <div class="builder">
-  <form action="" method="post" enctype="multipart/form-data">
+  <div class="alert alert-warning" role="alert" *ngIf="incompleteSubmit">
+    Please complete the highlighted fields
+  </div>
+  <form
+    action=""
+    method="post"
+    enctype="multipart/form-data"
+    #form="ngForm"
+    (change)="checkStatus(form)"
+  >
     <div class="form-group">
       <label for="name">Give it a name</label>
       <input
+        ngModel
+        required
         class="form-control"
         type="text"
         name="name"
         id="name"
         placeholder="Name"
         aria-describedby="nameHelp"
+        #nameCtrl="ngModel"
+        [ngClass]="{ 'invalid-input': nameCtrl.invalid && incompleteSubmit }"
       />
       <small id="nameHelp" class="form-text text-muted"
         >20 characters max</small
@@ -18,12 +31,18 @@
     <div class="form-group">
       <label for="description">What makes your recipe amazing?</label>
       <input
+        ngModel
+        required
         class="form-control"
         type="text"
         name="author"
         id="description"
         placeholder="Description"
         aria-describedby="descriptionHelp"
+        #descriptionCtrl="ngModel"
+        [ngClass]="{
+          'invalid-input': descriptionCtrl.invalid && incompleteSubmit
+        }"
       />
       <small id="descriptionHelp" class="form-text text-muted"
         >20 characters max</small
@@ -34,18 +53,37 @@
     <div class="imageArea">
       <div class="custom-file">
         <input
+          ngModel
+          required
           class="custom-file-input"
           id="recipePic"
           type="file"
           name="image"
           (change)="onImageSelect($event)"
+          #imageCtrl="ngModel"
+          [disabled]="localUrl != ''"
         />
-        <label class="custom-file-label" for="recipePic">Choose File</label>
+        <label
+          class="custom-file-label"
+          for="recipePic"
+          id="fileName"
+          [ngClass]="{
+            'invalid-input': imageCtrl.invalid && incompleteSubmit
+          }"
+          >Choose File</label
+        >
       </div>
       <img [src]="localUrl || ''" alt="" />
+      <i
+        *ngIf="localUrl != ''"
+        id="deletePic"
+        class="fas fa-times-circle"
+        (click)="onDeletePic(imageCtrl)"
+      >
+      </i>
     </div>
-    <div class="buttonBar">
-      <button type="button" class="btn btn-primary" (click)="onUpload()">
+    <div class="buttonBar" [ngClass]="{ repositionButton: localUrl !== '' }">
+      <button type="button" class="btn btn-primary" (click)="onUpload(form)">
         Upload
       </button>
     </div>
