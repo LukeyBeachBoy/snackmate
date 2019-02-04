@@ -3,17 +3,22 @@
     ><i class="fas fa-times"></i
   ></a>
   <div class="d-flex" id="userArea">
-    <img class="img-fluid" id="profilePic" src="../../assets/user.png" alt="" />
-    <h4>{{ user.username }}</h4>
+    <img
+      class="img-fluid"
+      id="profilePic"
+      src="{{ (auth.user$ | async)?.photoURL || default.photoURL }}"
+      alt=""
+    />
+    <h4>{{ (auth.user$ | async)?.displayName || default.displayName }}</h4>
   </div>
   <div class="navButtons">
-    <a routerLink="" (click)="onNav()"
+    <a (click)="auth.googleSignin()"
       >Login <i class="fas fa-sign-in-alt"></i
     ></a>
     <a routerLink="" (click)="onNav()">Profile <i class="fas fa-user"></i></a>
     <a routerLink="" (click)="onNav()">Feed <i class="fas fa-list-alt"></i></a>
     <a routerLink="" (click)="onNav()">Search <i class="fas fa-search"></i></a>
-    <a routerLink="" (click)="onNav()"
+    <a routerLink="" (click)="onLogout()"
       >Logout <i class="fas fa-sign-in-alt"></i
     ></a>
     <a routerLink="/new-recipe" (click)="onNav()"
