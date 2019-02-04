@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, Output, Input } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import * as $ from 'jquery';
 import { Observable } from 'rxjs';
 import { SidebarService } from '../services/sidebar.service';
@@ -27,7 +27,7 @@ export class SidebarComponent implements OnInit {
   ) {}
 
   @HostListener('window:resize', ['$event'])
-  resizeMenu($event) {
+  resizeMenu() {
     /**
      * Check the 'mobile' class to see if the screen size
      * is 160px
