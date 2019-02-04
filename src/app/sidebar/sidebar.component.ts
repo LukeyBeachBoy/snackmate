@@ -1,11 +1,9 @@
 import { Component, OnInit, HostListener, Output, Input } from '@angular/core';
 import * as $ from 'jquery';
-import { Subject, Observable, Subscription, Subscriber } from 'rxjs';
+import { Observable } from 'rxjs';
 import { SidebarService } from '../services/sidebar.service';
 import { AuthService } from '../services/auth.service';
 import { User } from '../services/user.model';
-import { EventEmitter } from 'events';
-import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 @Component({

@@ -18,8 +18,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 import { FeedComponent } from './feed/feed.component';
 import { RecipeBuilderComponent } from './recipe-builder/recipe-builder.component';
-import { SidebarService } from './services/sidebar.service';
 import { environment } from 'src/environments/environment';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { environment } from 'src/environments/environment';
     AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [
+    AngularFireStorageModule,
     AuthService,
     AngularFirestore,
     { provide: FirestoreSettingsToken, useValue: {} }

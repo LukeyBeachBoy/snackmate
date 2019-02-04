@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Ellipsis } from 'ftellipsis';
 import * as $ from 'jquery';
+import { Recipe } from '../services/recipe.model';
 
 @Component({
   selector: 'app-recipe-card',
@@ -8,22 +9,7 @@ import * as $ from 'jquery';
   styleUrls: ['./recipe-card.component.scss']
 })
 export class RecipeCardComponent implements OnInit {
-  @Input() recipe: {
-    name: string;
-    pic: string;
-    author: string;
-    authorPic: string;
-    description: string;
-    nutrition: {
-      calories: number;
-      protein: number;
-      carbs: number;
-      fat: number;
-    };
-    uploaded: string;
-    likes: number;
-    comments: string;
-  };
+  @Input() recipe: Recipe;
 
   constructor() {}
 

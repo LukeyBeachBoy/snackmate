@@ -11,19 +11,32 @@
     />
     <h4>{{ (auth.user$ | async)?.displayName || default.displayName }}</h4>
   </div>
-  <div class="navButtons">
+  <div
+    class="navButtons"
+    *ngIf="(auth.user$ | async); then loggedIn; else guest"
+  ></div>
+
+  <ng-template #noAuthNeeded>
+    <a routerLink="" (click)="onNav()">Feed <i class="fas fa-list-alt"></i></a>
+    <a routerLink="" (click)="onNav()">Search <i class="fas fa-search"></i></a>
+  </ng-template>
+
+  <ng-template #guest>
     <a (click)="auth.googleSignin()"
       >Login <i class="fas fa-sign-in-alt"></i
     ></a>
+    <ng-container *ngTemplateOutlet="noAuthNeeded"></ng-container>
+  </ng-template>
+
+  <ng-template #loggedIn>
+    <ng-container *ngTemplateOutlet="noAuthNeeded"></ng-container>
     <a routerLink="" (click)="onNav()">Profile <i class="fas fa-user"></i></a>
-    <a routerLink="" (click)="onNav()">Feed <i class="fas fa-list-alt"></i></a>
-    <a routerLink="" (click)="onNav()">Search <i class="fas fa-search"></i></a>
-    <a routerLink="" (click)="onLogout()"
-      >Logout <i class="fas fa-sign-in-alt"></i
-    ></a>
     <a routerLink="/new-recipe" (click)="onNav()"
       >Create Recipe <i class="fas fa-pen-square"></i
     ></a>
-  </div>
+    <a routerLink="" (click)="onLogout()"
+      >Logout <i class="fas fa-sign-in-alt"></i
+    ></a>
+  </ng-template>
 </div>
 <span class="mobile"></span>

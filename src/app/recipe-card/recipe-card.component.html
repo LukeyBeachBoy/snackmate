@@ -1,10 +1,15 @@
 <div class="recipeCard mx-auto">
   <div class="recipeHeader"><h6>American Burger</h6></div>
-  <img id="recipePic" class="img-fluid" src="{{ recipe.pic || '' }}" alt="" />
+  <img
+    id="recipePic"
+    class="img-fluid"
+    src="{{ recipe.imageURL || '' }}"
+    alt=""
+  />
   <div class="recipeBody">
     <div class="userDate">
-      <img class="img-fluid" id="userPic" src="{{ recipe.authorPic }}" alt="" />
-      <h5>{{ recipe.author }}</h5>
+      <img class="img-fluid" id="userPic" src="{{ recipe }}" alt="" />
+      <h5>{{ recipe }}</h5>
       <span class="badge badge-primary badge-pill"
         >{{ recipe.nutrition.calories }} Calories</span
       >
@@ -43,18 +48,18 @@
           </li>
         </ul>
       </div>
-      <p id="uploadedTime">{{ recipe.uploaded }}</p>
+      <p id="uploadedTime">{{ recipe }}</p>
     </div>
     <hr id="footerLine" />
     <div class="recipeFooter">
       <div class="social">
         <div class="likes">
           <img src="../../assets/heart.png" alt="" />
-          <p class="small">{{ recipe.likes }}</p>
+          <p class="small">{{ recipe }}</p>
         </div>
         <div class="comments">
           <img src="../../assets/comments.png" alt="" />
-          <p class="small">{{ recipe.comments }}</p>
+          <p class="small">{{ recipe }}</p>
         </div>
       </div>
     </div>
