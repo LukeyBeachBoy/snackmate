@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Ellipsis } from 'ftellipsis';
-import * as $ from 'jquery';
 import { Recipe } from '../services/recipe.model';
-
+import { AngularFireStorage } from '@angular/fire/storage';
 @Component({
   selector: 'app-recipe-card',
   templateUrl: './recipe-card.component.html',
@@ -10,13 +8,18 @@ import { Recipe } from '../services/recipe.model';
 })
 export class RecipeCardComponent implements OnInit {
   @Input() recipe: Recipe;
-
-  constructor() {}
+  recipeURL: string;
+  constructor(public storage: AngularFireStorage) {}
 
   ngOnInit() {
-    const description = $('.description')[0];
-    const ellipsis = new Ellipsis(description);
-    ellipsis.calc();
-    ellipsis.set();
+    console.log(this.recipe.recipeId);
+    this.storage
+      .ref('')
+      .child(`recipes/${this.recipe.recipeId}.jpg`)
+      .getDownloadURL()
+      .subscribe(url => {
+        this.recipeURL = url;
+        console.log(this.recipeURL);
+      });
   }
 }

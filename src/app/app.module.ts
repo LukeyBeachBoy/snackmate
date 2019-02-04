@@ -19,8 +19,10 @@ import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 import { FeedComponent } from './feed/feed.component';
 import { RecipeBuilderComponent } from './recipe-builder/recipe-builder.component';
 import { environment } from 'src/environments/environment';
-import { AngularFireDatabase } from '@angular/fire/database';
-import { AngularFireStorageModule } from '@angular/fire/storage';
+import {
+  AngularFireStorageModule,
+  AngularFireStorage
+} from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -37,11 +39,12 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     HttpClientModule,
     FormsModule,
     CommonModule,
+    AngularFireStorageModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [
-    AngularFireStorageModule,
+    AngularFireStorage,
     AuthService,
     AngularFirestore,
     { provide: FirestoreSettingsToken, useValue: {} }
