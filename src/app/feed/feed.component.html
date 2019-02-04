@@ -1,0 +1,6 @@
+<div id="recipeBoard">
+  <app-recipe-card
+    *ngFor="let recipe of (recipes | async)"
+    [recipe]="recipe"
+  ></app-recipe-card>
+</div>

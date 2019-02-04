@@ -1,0 +1,28 @@
+$primaryColour: #e26d6d;
+$darkGrey: #3f3f3fd1;
+
+.header {
+  background-color: $primaryColour;
+  border-bottom: 1.4px solid #1f1f1f47;
+  height: 56px;
+  margin: 0 -15px;
+  img {
+    width: 23.1px;
+    cursor: pointer;
+    position: relative;
+    top: 1.1em;
+    right: 1em;
+    float: right;
+  }
+  a {
+    font-family: 'TwCenMT_Bold';
+    color: white;
+    margin-bottom: 0;
+    font-size: 31px;
+    text-decoration: none;
+    position: relative;
+    top: 0.14em;
+    left: 0.4em;
+    cursor: pointer;
+  }
+}

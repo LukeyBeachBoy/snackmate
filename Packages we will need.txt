@@ -1,0 +1,29 @@
+Version Control: Git
+MISC: 
+    nodemon - instant reload local development
+TESTING:
+    mocha - development testing module
+    expect - an assertation library which simplifies the checking of return values
+    supertest - allows us to test server requests by replacing the request() function
+    axiosist - allows us to test axio (promise based) http requests
+    rewire - lets you swap out callbacks for spies, which tell you if functions ran and with what parameters
+SERVER + API:
+    axio - promise-based http requests to our api
+    request - handles http requests
+    express - used to create our webserver
+        middleware:
+            app.set('view engine','hbs') - so we can inject data into views
+            Express.static - so we can have static pages as well
+    hbs (Handlebars) - view engine to create dynamic pages
+    jsonwebtoken - allows us to encrypt user tokens for authentication
+    bcrypt - allows us to salt and hash user passwords
+DATABASE
+    mongoDb
+        - exe to make the database
+        - Robo3T gui to interact with it (optional)
+        - mongodb module to use it in node
+    Mongoose - allows us to abstract our database objects into java-like classes with their own methods and properties
+    Postman exe/dmg - allows us to send hhtp requests to our db as if from a browser
+    bodyParser - allows us to parse the body of post requests to store new object in the database from the browser
+CLIENT RENDERING
+    AngularJS - data-binding and material interface

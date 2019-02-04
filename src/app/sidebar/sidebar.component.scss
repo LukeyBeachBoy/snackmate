@@ -1,0 +1,125 @@
+$mobileWidth: 450px;
+
+#sidebarBtn {
+  transition: transform 0.3s ease-in-out;
+}
+/*
+* This class will have these properties when in desktop mode.
+*/
+.mobile {
+  float: left;
+  z-index: -10;
+}
+
+.sideMenu {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  right: 0;
+  background-color: #ba4444;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 45px;
+
+  #userArea {
+    min-width: 250px;
+    flex-direction: row;
+    align-items: center;
+    img {
+      margin-right: 0.5em;
+      border-radius: 40px;
+    }
+    h4 {
+      font-family: 'TwCenMT';
+      margin: 0;
+      color: mistyrose;
+    }
+  }
+  a {
+    white-space: nowrap;
+    display: flex !important;
+    align-items: center;
+    padding: 8px;
+    padding-left: 32px;
+    text-decoration: none;
+    font-size: 1.8em;
+    color: #ffffff;
+    cursor: pointer;
+    display: block;
+    transition: 0.3s;
+    font-family: 'TwCenMT';
+    i {
+      margin-left: 0.5em;
+    }
+  }
+  a:hover {
+    color: #1a1a1a;
+  }
+  a:nth-child(6) {
+    i {
+      transform: scaleX(-1);
+    }
+  }
+  .navButtons {
+    margin-top: 1.5em;
+  }
+  .closeBtn {
+    display: block !important;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align: right;
+    transition: 0.5s !important;
+    i {
+      width: 112px;
+    }
+  }
+
+  #profilePic {
+    margin-left: 28px;
+    height: 5em;
+  }
+}
+
+@media screen and (max-width: $mobileWidth) {
+  .mobile {
+    float: none;
+  }
+  .closeBtn {
+    i {
+      width: 108px !important;
+    }
+  }
+  .sideMenu {
+    padding-top: 15px;
+    #userArea {
+      margin-top: 1.2em;
+      flex-direction: column;
+      align-items: center;
+      min-width: 160px !important;
+      img {
+        margin-left: 0;
+        margin-right: 0;
+        height: 5em !important;
+      }
+      h4 {
+        font-size: 1.4em;
+        text-align: center;
+        padding: 0 0.5em;
+      }
+    }
+    .navButtons {
+      margin-top: 0.5em;
+      a {
+        width: 160px;
+        justify-content: center;
+        padding: 12px;
+      }
+    }
+  }
+  .sideMenu a {
+    font-size: 26px;
+  }
+}

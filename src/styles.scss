@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'TwCenMT';
+  src: url(./fonts/TCCM____.TTF);
+}
+@font-face {
+  font-family: 'TwCenMT_Bold';
+  src: url(./fonts/tw_cen_mt-bold.TTF);
+}
+
+* {
+  box-sizing: border-box;
+}
+body,
+html {
+  height: 100%;
+}
