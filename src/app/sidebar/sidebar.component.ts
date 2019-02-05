@@ -15,7 +15,7 @@ export class SidebarComponent implements OnInit {
   user: Observable<User>;
   default = {
     displayName: 'Not logged in',
-    photoURL: '../../assets/user.png',
+    photoURL: 'assets/user.png',
     uid: '',
     email: ''
   };
