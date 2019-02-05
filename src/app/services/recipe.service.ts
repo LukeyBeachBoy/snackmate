@@ -36,11 +36,9 @@ export class RecipeService implements OnInit {
   }
 
   createRecipe(recipe: Recipe, image) {
-    recipe.date = new Date().toDateString();
+    recipe.date = new Date();
     this.recipes.add(recipe).then(doc => {
-      doc.update({ recipeId: doc.id }).then(updatedDate => {
-        console.log('Successful update');
-      });
+      doc.update({ recipeId: doc.id }).then(updatedDate => {});
       this.storage.upload(`/recipes/${doc.id}.jpg`, image);
     });
   }

@@ -49,7 +49,7 @@ export class RecipeBuilderComponent implements OnInit {
     }
     const recipe: Recipe = {
       allergens: [],
-      date: '',
+      date: null,
       description: form.value.description,
       imageURL: '',
       ingredients: [],

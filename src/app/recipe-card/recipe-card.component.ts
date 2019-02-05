@@ -24,7 +24,6 @@ export class RecipeCardComponent implements OnInit {
       ((this.recipe.date as unknown) as firestore.Timestamp).nanoseconds
     );
     this.recipe.date = moment(timestamp.toDate()).fromNow();
-    console.log(this.recipe.date);
     this.auth.getUser(this.recipe.userId).subscribe((user: User) => {
       this.user = user as User;
       this.storage
