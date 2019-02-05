@@ -19,7 +19,7 @@ export class RecipeBuilderComponent implements OnInit {
   }
   onImageSelect(event) {
     this.selectedFile = <File>event.target.files[0];
-    if (this.selectedFile) { 
+    if (this.selectedFile) {
       const reader = new FileReader();
       reader.onload = e => (this.localUrl = reader.result as string);
       reader.readAsDataURL(this.selectedFile);
