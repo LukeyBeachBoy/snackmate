@@ -11,14 +11,16 @@ import { User } from './user.model';
   providedIn: 'root'
 })
 export class RecipeService implements OnInit {
-  recipes: AngularFirestoreCollection<Recipe> = null;
+  recipes: AngularFirestoreCollection<Recipe>;
   user: User;
 
   constructor(
     private db: AngularFirestore,
     private auth: AuthService,
     public storage: AngularFireStorage
-  ) {}
+  ) {
+    this.recipes = db.collection<Recipe>('/recipes');
+  }
 
   ngOnInit() {
     this.auth.user$.subscribe(user => {
@@ -33,8 +35,13 @@ export class RecipeService implements OnInit {
     return this.recipes;
   }
 
-  createRecipe(recipe) {
-    recipe.userId = this.user.uid;
-    this.recipes.add(recipe);
+  createRecipe(recipe: Recipe, image) {
+    recipe.date = new Date().toDateString();
+    this.recipes.add(recipe).then(doc => {
+      doc.update({ recipeId: doc.id }).then(updatedDate => {
+        console.log('Successful update');
+      });
+      this.storage.upload(`/recipes/${doc.id}.jpg`, image);
+    });
   }
 }

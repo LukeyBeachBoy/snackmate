@@ -16,6 +16,6 @@ export class Recipe {
     fat: number;
     protein: number;
   };
-  recipeId: string;
-  userId: string;
+  recipeId?: string;
+  userId?: string;
 }

@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import * as $ from 'jquery';
 import { NgForm, NgModel } from '@angular/forms';
 import { RecipeService } from '../services/recipe.service';
+import { Recipe } from '../services/recipe.model';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-recipe-builder',
@@ -13,7 +15,11 @@ export class RecipeBuilderComponent implements OnInit {
   selectedFile: File = null;
   localUrl = '';
   incompleteSubmit = false;
-  constructor(private http: HttpClient, private recipeSvc: RecipeService) {}
+  constructor(
+    private http: HttpClient,
+    private recipeSvc: RecipeService,
+    private auth: AuthService
+  ) {}
   ngOnInit() {
     $('.custom-file-label').css('font-size', '1.15em');
   }
@@ -41,16 +47,30 @@ export class RecipeBuilderComponent implements OnInit {
     if (form.invalid) {
       return (this.incompleteSubmit = true);
     }
-    const fd = new FormData();
-    fd.append('name', $('#name').val() as string);
-    fd.append('description', $('#description').val() as string);
-    fd.append('image', this.selectedFile, this.selectedFile.name);
-    this.http
-      .post('http://localhost:3000/test', fd, { responseType: 'text' })
-      .subscribe(res => {
-        // By default http will expect Json so if not then tell it what type
-        console.log(res);
-      });
+    const recipe: Recipe = {
+      allergens: [],
+      date: '',
+      description: form.value.description,
+      imageURL: '',
+      ingredients: [],
+      instructions: [],
+      name: form.value.name,
+      nutrition: {
+        calories: 0,
+        carbs: 0,
+        fat: 0,
+        protein: 0
+      }
+    };
+    this.auth.user$.subscribe(
+      user => {
+        if (user) {
+          recipe.userId = user.uid;
+          this.recipeSvc.createRecipe(recipe, this.selectedFile);
+        }
+      },
+      err => {}
+    );
   }
   onDeletePic(imageCtrl: NgModel) {
     imageCtrl.reset(); // Reset the form to empty so the user can choose another pic
