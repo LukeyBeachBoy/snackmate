@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import * as $ from 'jquery';
-import { SidebarService } from '../sidebar.service';
+import { SidebarService } from '../services/sidebar.service';
 
 @Component({
   selector: 'app-header',
