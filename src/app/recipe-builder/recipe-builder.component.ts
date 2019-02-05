@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as $ from 'jquery';
 import { NgForm, NgModel } from '@angular/forms';
+import { RecipeService } from '../services/recipe.service';
 
 @Component({
   selector: 'app-recipe-builder',
@@ -12,13 +13,13 @@ export class RecipeBuilderComponent implements OnInit {
   selectedFile: File = null;
   localUrl = '';
   incompleteSubmit = false;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private recipeSvc: RecipeService) {}
   ngOnInit() {
     $('.custom-file-label').css('font-size', '1.15em');
   }
   onImageSelect(event) {
     this.selectedFile = <File>event.target.files[0];
-    if (this.selectedFile) {
+    if (this.selectedFile) { 
       const reader = new FileReader();
       reader.onload = e => (this.localUrl = reader.result as string);
       reader.readAsDataURL(this.selectedFile);

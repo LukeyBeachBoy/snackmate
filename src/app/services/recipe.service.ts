@@ -33,7 +33,7 @@ export class RecipeService implements OnInit {
     return this.recipes;
   }
 
-  createRecipe(recipe: Recipe) {
+  createRecipe(recipe) {
     recipe.userId = this.user.uid;
     this.recipes.add(recipe);
   }

@@ -8,7 +8,7 @@ import {
   AngularFirestoreDocument
 } from '@angular/fire/firestore';
 
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { User } from './user.model';
 
@@ -58,5 +58,9 @@ export class AuthService {
     };
 
     return userRef.set(data, { merge: true });
+  }
+
+  public getUser(uid: string) {
+    return this.afs.doc(`/users/${uid}`).valueChanges();
   }
 }

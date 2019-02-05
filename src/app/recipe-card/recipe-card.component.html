@@ -1,10 +1,10 @@
 <div class="recipeCard mx-auto">
   <div class="recipeHeader"><h6>American Burger</h6></div>
-  <img id="recipePic" class="img-fluid" src="{{ recipeURL }}" alt="" />
+  <img id="recipePic" class="img-fluid" src="{{ recipeImageURL }}" alt="" />
   <div class="recipeBody">
     <div class="userDate">
-      <img class="img-fluid" id="userPic" src="" alt="" />
-      <h5></h5>
+      <img class="img-fluid" id="userPic" src="{{ userImageURL }}" alt="" />
+      <h5>{{ user?.displayName }}</h5>
       <span class="badge badge-primary badge-pill"
         >{{ recipe.nutrition.calories }} Calories</span
       >
