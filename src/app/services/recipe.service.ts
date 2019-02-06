@@ -7,6 +7,8 @@ import {
 } from '@angular/fire/firestore';
 import { AuthService } from './auth.service';
 import { User } from './user.model';
+import { NgxPicaService } from 'ngx-pica';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +17,7 @@ export class RecipeService implements OnInit {
   user: User;
 
   constructor(
+    private pica: NgxPicaService,
     private db: AngularFirestore,
     private auth: AuthService,
     public storage: AngularFireStorage
@@ -35,11 +38,17 @@ export class RecipeService implements OnInit {
     return this.recipes;
   }
 
-  createRecipe(recipe: Recipe, image) {
+  createRecipe(recipe: Recipe, image: File) {
     recipe.date = new Date();
-    this.recipes.add(recipe).then(doc => {
-      doc.update({ recipeId: doc.id }).then(updatedDate => {});
-      this.storage.upload(`/recipes/${doc.id}.jpg`, image);
-    });
+    const originalImage: File = image;
+    if (image) {
+      this.pica.compressImage(image, 0.4).subscribe(resizedImage => {
+        this.recipes.add(recipe).then(doc => {
+          doc.update({ recipeId: doc.id }).then(updatedDate => {});
+          this.storage.upload(`/recipes/${doc.id}.jpg`, originalImage);
+          this.storage.upload(`/recipes/thumbs/${doc.id}.jpg`, resizedImage);
+        });
+      });
+    }
   }
 }

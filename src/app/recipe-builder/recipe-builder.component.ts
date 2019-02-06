@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Location } from '@angular/common';
 import * as $ from 'jquery';
 import { NgForm, NgModel } from '@angular/forms';
 import { RecipeService } from '../services/recipe.service';
@@ -16,6 +17,7 @@ export class RecipeBuilderComponent implements OnInit {
   localUrl = '';
   incompleteSubmit = false;
   constructor(
+    private loc: Location,
     private http: HttpClient,
     private recipeSvc: RecipeService,
     private auth: AuthService
@@ -67,6 +69,7 @@ export class RecipeBuilderComponent implements OnInit {
         if (user) {
           recipe.userId = user.uid;
           this.recipeSvc.createRecipe(recipe, this.selectedFile);
+          this.loc.go('');
         }
       },
       err => {}

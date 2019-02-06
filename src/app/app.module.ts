@@ -23,6 +23,7 @@ import {
   AngularFireStorageModule,
   AngularFireStorage
 } from '@angular/fire/storage';
+import { NgxPicaModule } from 'ngx-pica';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {
     CommonModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    NgxPicaModule
   ],
   providers: [
     AngularFireStorage,
