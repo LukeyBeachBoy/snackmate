@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Location } from '@angular/common';
 import * as $ from 'jquery';
@@ -6,13 +6,15 @@ import { NgForm, NgModel } from '@angular/forms';
 import { RecipeService } from '../services/recipe.service';
 import { Recipe } from '../services/recipe.model';
 import { AuthService } from '../services/auth.service';
-
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/takeUntil';
 @Component({
   selector: 'app-recipe-builder',
   templateUrl: './recipe-builder.component.html',
   styleUrls: ['./recipe-builder.component.scss']
 })
-export class RecipeBuilderComponent implements OnInit {
+export class RecipeBuilderComponent implements OnInit, OnDestroy {
+  destroy$: Subject<boolean> = new Subject<boolean>();
   selectedFile: File = null;
   localUrl = '';
   incompleteSubmit = false;
@@ -64,7 +66,7 @@ export class RecipeBuilderComponent implements OnInit {
         protein: 0
       }
     };
-    this.auth.user$.subscribe(
+    this.auth.user$.takeUntil(this.destroy$).subscribe(
       user => {
         if (user) {
           recipe.userId = user.uid;
@@ -79,5 +81,10 @@ export class RecipeBuilderComponent implements OnInit {
     imageCtrl.reset(); // Reset the form to empty so the user can choose another pic
     this.localUrl = ''; // Tell other elements that the url is empty so they can update
     $('#fileName').text('Choose File'); // Add the place holder back in
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
   }
 }
