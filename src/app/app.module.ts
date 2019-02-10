@@ -24,6 +24,8 @@ import {
   AngularFireStorage
 } from '@angular/fire/storage';
 import { NgxPicaModule } from 'ngx-pica';
+import { RecipeDetailsComponent } from './recipe-builder/recipe-details/recipe-details.component';
+import { RecipeInitialComponent } from './recipe-builder/recipe-initial/recipe-initial.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { NgxPicaModule } from 'ngx-pica';
     SidebarComponent,
     RecipeCardComponent,
     FeedComponent,
-    RecipeBuilderComponent
+    RecipeBuilderComponent,
+    RecipeDetailsComponent,
+    RecipeInitialComponent
   ],
   imports: [
     BrowserModule,
