@@ -1,7 +1,27 @@
 $mobileWidth: 450px;
 
 #sidebarBtn {
-  transition: transform 0.3s ease-in-out;
+  transition: translateX(0) 0.1s ease-in-out;
+}
+
+.desktop {
+  min-width: 250px;
+}
+
+.mobile {
+  min-width: 196px;
+}
+
+.open {
+  transform: translate(0px);
+}
+
+.openMobile {
+  animation: openMobile 1.5s ease-in-out;
+}
+
+.close {
+  transform: translate(250px);
 }
 /*
 * This class will have these properties when in desktop mode.
@@ -13,7 +33,7 @@ $mobileWidth: 450px;
 
 .sideMenu {
   height: 100%;
-  width: 0;
+  // width: 0;
   position: fixed;
   z-index: 3;
   top: 0;
@@ -32,7 +52,7 @@ $mobileWidth: 450px;
       border-radius: 40px;
     }
     h4 {
-      font-family: 'TwCenMT';
+      font-family: "TwCenMT";
       margin: 0;
       color: mistyrose;
     }
@@ -48,8 +68,7 @@ $mobileWidth: 450px;
     color: #ffffff;
     cursor: pointer;
     display: block;
-    transition: 0.3s;
-    font-family: 'TwCenMT';
+    font-family: "TwCenMT";
     i {
       margin-left: 0.5em;
     }

@@ -30,26 +30,38 @@ export class SidebarComponent implements OnInit {
   resizeMenu() {
     /**
      * Check the 'mobile' class to see if the screen size
-     * is 160px
+     * and resize the sidebar if the client is on mobile/desktop
      */
     if ($('.mobile').css('float') === 'none') {
       if (this.sidebarOpen) {
-        $('#sideBar').css({ width: '160px' });
+        $('.sideMenu')
+          .addClass('mobile')
+          .removeClass('desktop');
       }
     } else {
       if (this.sidebarOpen) {
-        $('#sideBar').css({ width: '250px' });
+        $('.sideMenu')
+          .addClass('desktop')
+          .removeClass('mobile');
       }
     }
   }
 
   ngOnInit() {
+    /* This is the function called each time the sidebar button is
+     pressed */
     this.sidebar.getStatus().subscribe(() => {
       if (!this.sidebarOpen) {
         if ($('.mobile').css('float') === 'none') {
-          $('#sideBar').css({ width: '160px' });
+          $('#sideBar')
+            .addClass('openMobile')
+            .removeClass('close');
+          // $('#sideBar').css({ width: '196px' });
         } else {
-          $('#sideBar').css({ width: '250px' });
+          // $('#sideBar').css({ width: '250px' });
+          $('#sideBar')
+            .addClass('open')
+            .removeClass('close');
         }
 
         $('#sidebarBtn').css({
@@ -58,7 +70,10 @@ export class SidebarComponent implements OnInit {
         });
         this.sidebarOpen = true;
       } else {
-        $('#sideBar').css({ width: '0' });
+        // $('#sideBar').css({ width: '0' });
+        $('#sideBar')
+          .addClass('close')
+          .removeClass('open openMobile');
         $('#sidebarBtn').css({ transform: 'rotate(0)' });
         this.sidebarOpen = false;
       }
