@@ -33,8 +33,13 @@ export class RecipeService implements OnInit {
     });
   }
 
+  /**
+   * @description Returns a list of all recipes in date order
+   */
   getRecipes(): AngularFirestoreCollection<Recipe> {
-    this.recipes = this.db.collection(`recipes/`);
+    this.recipes = this.db.collection(`recipes/`, recipe =>
+      recipe.orderBy('date', 'desc')
+    );
     return this.recipes;
   }
 
