@@ -1,5 +1,4 @@
-<h1 class="title text-center text-white">RECIPE BUILDER</h1>
-<div class="builder">
+<div class="container">
   <div class="alert alert-warning" role="alert" *ngIf="incompleteSubmit">
     Please complete the highlighted fields
   </div>
@@ -48,7 +47,6 @@
         >20 characters max</small
       >
     </div>
-
     <label for="recipePic">Show it off with your best photo!</label>
     <div class="imageArea">
       <div class="custom-file">
@@ -86,6 +84,9 @@
       <button type="button" class="btn btn-primary" (click)="onUpload(form)">
         Upload
       </button>
+      <a class="btn btn-primary" routerLink="step-2" routerLinkActive="active">
+        Next Step!
+      </a>
     </div>
   </form>
 </div>

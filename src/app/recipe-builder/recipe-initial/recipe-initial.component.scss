@@ -54,16 +54,13 @@ input {
   }
 }
 
-.builder {
-  margin: auto;
-  width: 35%;
-  .custom-file {
-    margin-bottom: 1em;
-  }
-  .custom-file-label {
-    overflow: hidden;
-  }
+.custom-file {
+  margin-bottom: 1em;
 }
+.custom-file-label {
+  overflow: hidden;
+}
+
 .buttonBar {
   width: 100%;
   text-align: center;

@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -9,6 +10,11 @@ import {
   AngularFirestore,
   FirestoreSettingsToken
 } from '@angular/fire/firestore';
+import {
+  AngularFireStorageModule,
+  AngularFireStorage
+} from '@angular/fire/storage';
+import { NgxPicaModule } from 'ngx-pica';
 
 import { AuthService } from './services/auth.service';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,11 +25,6 @@ import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 import { FeedComponent } from './feed/feed.component';
 import { RecipeBuilderComponent } from './recipe-builder/recipe-builder.component';
 import { environment } from 'src/environments/environment';
-import {
-  AngularFireStorageModule,
-  AngularFireStorage
-} from '@angular/fire/storage';
-import { NgxPicaModule } from 'ngx-pica';
 import { RecipeDetailsComponent } from './recipe-builder/recipe-details/recipe-details.component';
 import { RecipeInitialComponent } from './recipe-builder/recipe-initial/recipe-initial.component';
 
@@ -40,6 +41,7 @@ import { RecipeInitialComponent } from './recipe-builder/recipe-initial/recipe-i
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,

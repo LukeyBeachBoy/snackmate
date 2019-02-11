@@ -11,8 +11,16 @@ const routes: Routes = [
     path: 'new-recipe',
     component: RecipeBuilderComponent,
     children: [
-      { path: '', component: RecipeInitialComponent },
-      { path: 'step-2', component: RecipeDetailsComponent }
+      {
+        path: '',
+        component: RecipeInitialComponent,
+        data: { animation: 'isLeft' }
+      },
+      {
+        path: 'step-2',
+        component: RecipeDetailsComponent,
+        data: { animation: 'isRight' }
+      }
     ]
   },
   { path: '**', redirectTo: '' }

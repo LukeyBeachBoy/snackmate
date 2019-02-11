@@ -1,1 +1,19 @@
-<router-outlet></router-outlet>
+<h1 class="title text-center text-white">RECIPE BUILDER</h1>
+<div class="progressContainer">
+  <div class="progressBar nav nav-tabs">
+    <a
+      class="nav-link"
+      routerLink="/new-recipe"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Step 1</a
+    >
+    <a class="nav-link" routerLink="step-2" routerLinkActive="active">Step 2</a>
+    <a class="nav-link" routerLink="/routePath" routerLinkActive="active"
+      >Preview</a
+    >
+  </div>
+</div>
+<div [@routeAnimations]="prepareRoute(outlet)" class="builder">
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>
