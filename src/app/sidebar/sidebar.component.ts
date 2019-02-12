@@ -1,8 +1,10 @@
-import { Component, OnInit, HostListener, Output, Input } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import * as $ from 'jquery';
-import { Subject, Observable } from 'rxjs';
-import { SidebarService } from '../sidebar.service';
-import { EventEmitter } from 'events';
+import { Observable } from 'rxjs';
+import { SidebarService } from '../services/sidebar.service';
+import { AuthService } from '../services/auth.service';
+import { User } from '../services/user.model';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,17 +12,22 @@ import { EventEmitter } from 'events';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  @Input() user = {
-    username: 'Not logged in',
-    profilePic: '',
-    logged: false
+  user: Observable<User>;
+  default = {
+    displayName: 'Not logged in',
+    photoURL: '../../assets/user.png',
+    uid: '',
+    email: ''
   };
   sidebarOpen = false;
-
-  constructor(private sidebar: SidebarService) {}
+  constructor(
+    private sidebar: SidebarService,
+    public auth: AuthService,
+    private $location: Location
+  ) {}
 
   @HostListener('window:resize', ['$event'])
-  resizeMenu($event) {
+  resizeMenu() {
     /**
      * Check the 'mobile' class to see if the screen size
      * is 160px
@@ -57,6 +64,16 @@ export class SidebarComponent implements OnInit {
       }
     });
   }
+  onNav() {
+    this.sidebar.toggleSideBar();
+  }
+
+  onLogout() {
+    this.auth.signOut();
+    this.$location.go('/');
+    this.onNav();
+  }
+
   onClose($event) {
     event.preventDefault();
     this.sidebar.toggleSideBar();

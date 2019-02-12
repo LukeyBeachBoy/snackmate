@@ -1,36 +1,25 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Ellipsis } from 'ftellipsis';
-import * as $ from 'jquery';
-
+import { Recipe } from '../services/recipe.model';
+import { AngularFireStorage } from '@angular/fire/storage';
 @Component({
   selector: 'app-recipe-card',
   templateUrl: './recipe-card.component.html',
   styleUrls: ['./recipe-card.component.scss']
 })
 export class RecipeCardComponent implements OnInit {
-  @Input() recipe: {
-    name: string;
-    pic: string;
-    author: string;
-    authorPic: string;
-    description: string;
-    nutrition: {
-      calories: number;
-      protein: number;
-      carbs: number;
-      fat: number;
-    };
-    uploaded: string;
-    likes: number;
-    comments: string;
-  };
-
-  constructor() {}
+  @Input() recipe: Recipe;
+  recipeURL: string;
+  constructor(public storage: AngularFireStorage) {}
 
   ngOnInit() {
-    const description = $('.description')[0];
-    const ellipsis = new Ellipsis(description);
-    ellipsis.calc();
-    ellipsis.set();
+    console.log(this.recipe.recipeId);
+    this.storage
+      .ref('')
+      .child(`recipes/${this.recipe.recipeId}.jpg`)
+      .getDownloadURL()
+      .subscribe(url => {
+        this.recipeURL = url;
+        console.log(this.recipeURL);
+      });
   }
 }

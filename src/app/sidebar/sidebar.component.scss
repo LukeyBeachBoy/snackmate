@@ -15,7 +15,7 @@ $mobileWidth: 450px;
   height: 100%;
   width: 0;
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   top: 0;
   right: 0;
   background-color: #ba4444;
@@ -24,19 +24,21 @@ $mobileWidth: 450px;
   padding-top: 45px;
 
   #userArea {
+    min-width: 250px;
     flex-direction: row;
     align-items: center;
     img {
       margin-right: 0.5em;
+      border-radius: 40px;
     }
     h4 {
       font-family: 'TwCenMT';
-      white-space: nowrap;
       margin: 0;
       color: mistyrose;
     }
   }
   a {
+    white-space: nowrap;
     display: flex !important;
     align-items: center;
     padding: 8px;
@@ -44,6 +46,7 @@ $mobileWidth: 450px;
     text-decoration: none;
     font-size: 1.8em;
     color: #ffffff;
+    cursor: pointer;
     display: block;
     transition: 0.3s;
     font-family: 'TwCenMT';
@@ -95,7 +98,7 @@ $mobileWidth: 450px;
       margin-top: 1.2em;
       flex-direction: column;
       align-items: center;
-      width: 160px;
+      min-width: 160px !important;
       img {
         margin-left: 0;
         margin-right: 0;
@@ -103,8 +106,8 @@ $mobileWidth: 450px;
       }
       h4 {
         font-size: 1.4em;
-        padding-left: 0;
-        white-space: nowrap;
+        text-align: center;
+        padding: 0 0.5em;
       }
     }
     .navButtons {
