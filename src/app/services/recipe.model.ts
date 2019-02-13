@@ -1,6 +1,6 @@
 export class Recipe {
   allergens: Array<string>;
-  date: string;
+  date: Date | string;
   description: string;
   imageURL: string;
   ingredients: Array<{

@@ -30,40 +30,69 @@ export class SidebarComponent implements OnInit {
   resizeMenu() {
     /**
      * Check the 'mobile' class to see if the screen size
-     * is 160px
+     * and resize the sidebar if the client is on mobile/desktop
      */
     if ($('.mobile').css('float') === 'none') {
-      if (this.sidebarOpen) {
-        $('#sideBar').css({ width: '160px' });
-      }
+      // Resize for mobile
+      $('#sideBar').css({ width: '196px' });
     } else {
-      if (this.sidebarOpen) {
-        $('#sideBar').css({ width: '250px' });
-      }
+      $('#sideBar').css({ width: '250px' });
     }
   }
 
   ngOnInit() {
+    /* This is the function called each time the sidebar button is
+     pressed */
     this.sidebar.getStatus().subscribe(() => {
-      if (!this.sidebarOpen) {
-        if ($('.mobile').css('float') === 'none') {
-          $('#sideBar').css({ width: '160px' });
+      this.buttonToggle();
+      // If mobile
+      if ($('.mobile').css('float') === 'none') {
+        if (!this.sidebarOpen) {
+          $('#sideBar')
+            .addClass('openMobile')
+            .removeClass('closedMobile')
+            .removeClass('open')
+            .removeClass('closed');
+          this.sidebarOpen = true;
         } else {
-          $('#sideBar').css({ width: '250px' });
+          $('#sideBar')
+            .addClass('closedMobile')
+            .removeClass('openedMobile')
+            .removeClass('open')
+            .removeClass('closed');
+          this.sidebarOpen = false;
         }
-
-        $('#sidebarBtn').css({
-          transform: 'rotate(90deg)',
-          transition: '0.4s'
-        });
-        this.sidebarOpen = true;
       } else {
-        $('#sideBar').css({ width: '0' });
-        $('#sidebarBtn').css({ transform: 'rotate(0)' });
-        this.sidebarOpen = false;
+        if (!this.sidebarOpen) {
+          $('#sideBar')
+            .addClass('opened')
+            .removeClass('closed')
+            .removeClass('closedMobile')
+            .removeClass('openMobile');
+          this.sidebarOpen = true;
+        } else {
+          $('#sideBar')
+            .addClass('closed')
+            .removeClass('opened')
+            .removeClass('closedMobile')
+            .removeClass('openMobile');
+          this.sidebarOpen = false;
+        }
       }
     });
   }
+
+  buttonToggle() {
+    if (!this.sidebarOpen) {
+      $('#sidebarBtn').css({
+        transform: 'rotate(90deg)',
+        transition: '0.4s'
+      });
+    } else {
+      $('#sidebarBtn').css({ transform: 'rotate(0)' });
+    }
+  }
+
   onNav() {
     this.sidebar.toggleSideBar();
   }

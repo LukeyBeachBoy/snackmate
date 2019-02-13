@@ -19,31 +19,34 @@ export class RecipeCardComponent implements OnInit {
   constructor(public storage: AngularFireStorage, private auth: AuthService) {}
 
   ngOnInit() {
-    const timestamp: firestore.Timestamp = new firestore.Timestamp(
-      ((this.recipe.date as unknown) as firestore.Timestamp).seconds,
-      ((this.recipe.date as unknown) as firestore.Timestamp).nanoseconds
-    );
-    this.recipe.date = moment(timestamp.toDate()).fromNow();
-    console.log(this.recipe.date);
-    this.auth.getUser(this.recipe.userId).subscribe((user: User) => {
-      this.user = user as User;
-      this.storage
-        .ref(`users/${user.uid}.jpg`)
-        .getDownloadURL()
-        .subscribe(
-          userPicURL => {
-            this.userImageURL = userPicURL;
-          },
-          err => {
-            this.userImageURL = user.photoURL;
-          }
-        );
-      this.storage
-        .ref(`recipes/${this.recipe.recipeId}.jpg`)
-        .getDownloadURL()
-        .subscribe(recipeURL => {
-          this.recipeImageURL = recipeURL;
-        });
-    });
+    if (this.recipe.date) {
+      const timestamp: firestore.Timestamp = new firestore.Timestamp(
+        ((this.recipe.date as unknown) as firestore.Timestamp).seconds,
+        ((this.recipe.date as unknown) as firestore.Timestamp).nanoseconds
+      );
+      this.recipe.date = moment(timestamp.toDate()).fromNow();
+    }
+    if (this.recipe.userId) {
+      this.auth.getUser(this.recipe.userId).subscribe((user: User) => {
+        this.user = user as User;
+        this.storage
+          .ref(`users/${user.uid}.jpg`)
+          .getDownloadURL()
+          .subscribe(
+            userPicURL => {
+              this.userImageURL = userPicURL;
+            },
+            err => {
+              this.userImageURL = user.photoURL;
+            }
+          );
+        this.storage
+          .ref(`recipes/${this.recipe.recipeId}.jpg`)
+          .getDownloadURL()
+          .subscribe(recipeURL => {
+            this.recipeImageURL = recipeURL;
+          });
+      });
+    }
   }
 }
