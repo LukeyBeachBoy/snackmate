@@ -1,4 +1,0 @@
-Version Control: Git
-Server-side implementation is now abstracted by Firestore
-CLIENT RENDERING
-    AngularJS - data-binding and material interface

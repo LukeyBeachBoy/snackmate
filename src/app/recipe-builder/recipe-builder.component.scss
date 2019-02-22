@@ -1,3 +1,14 @@
+$mq-responsive: true;
+$mq-breakpoints: (
+  mobile: 320px,
+  tablet: 740px,
+  desktop: 980px,
+  wide: 1300px,
+  mobileLandscape: 480px
+);
+
+@import 'sass-mq';
+
 $primaryColour: #e26d6d;
 $darkGrey: #3f3f3fd1;
 $mobileWidth: 450px;
@@ -11,6 +22,7 @@ $mobileWidth: 450px;
 }
 
 .progressContainer {
+  box-shadow: #0000000a 0px 5px 11px 1px;
   margin: 0 -15px;
   background-color: white;
 }
@@ -43,11 +55,20 @@ $mobileWidth: 450px;
   position: relative;
   text-align: center;
   margin: auto;
-  width: 35%;
 }
 
-@media screen and (max-width: $mobileWidth) {
+@include mq($until: tablet) {
   .builder {
     width: 100%;
+  }
+}
+@include mq(tablet, desktop) {
+  .builder {
+    width: 65%;
+  }
+}
+@include mq(desktop) {
+  .builder {
+    width: 50%;
   }
 }

@@ -1,11 +1,17 @@
+/**
+ * @file Manages the first page of the recipe builder
+ * @author Luke Beach // lb580@kent.ac.uk
+ */
+
+
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Location } from '@angular/common';
 import * as $ from 'jquery';
 import { NgForm, NgModel } from '@angular/forms';
-import { RecipeService } from '../../services/recipe.service';
-import { Recipe } from '../../services/recipe.model';
+import { Recipe } from '../../definitions/recipe.model';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { User } from 'src/app/definitions/user.model';
+import { BuilderService } from 'src/app/services/builder.service';
 
 @Component({
   selector: 'app-recipe-initial',
@@ -13,17 +19,33 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./recipe-initial.component.scss']
 })
 export class RecipeInitialComponent implements OnInit {
+  user: User;
   selectedFile: File = null;
   localUrl = '';
   incompleteSubmit = false;
+  name;
+  description;
+  file;
+  fileName;
   constructor(
-    private loc: Location,
-    private http: HttpClient,
-    private recipeSvc: RecipeService,
-    private auth: AuthService
+    private router: Router,
+    private auth: AuthService,
+    private builder: BuilderService
   ) {}
   ngOnInit() {
-    $('.custom-file-label').css('font-size', '1.15em');
+    this.auth.user$.subscribe(user => {
+      this.user = user;
+    });
+    if (!this.builder.isEmpty()) {
+      const { name, description } = this.builder.getRecipe();
+      const { image, url, fileName } = this.builder.getImage();
+      this.description = description;
+      this.name = name;
+      // this.file = image;
+      this.localUrl = url;
+      $('.custom-file-label').attr('data-content', fileName);
+      $('.custom-file-label').text(fileName);
+    }
   }
   onImageSelect(event) {
     this.selectedFile = <File>event.target.files[0];
@@ -34,6 +56,7 @@ export class RecipeInitialComponent implements OnInit {
 
       let fieldVal: string = $('#recipePic').val() as string;
       fieldVal = fieldVal.replace('C:\\fakepath\\', '');
+      this.fileName = fieldVal;
       if (fieldVal !== undefined || fieldVal !== '') {
         $('.custom-file-label').attr('data-content', fieldVal);
         $('.custom-file-label').text(fieldVal);
@@ -45,35 +68,17 @@ export class RecipeInitialComponent implements OnInit {
       this.incompleteSubmit = false;
     }
   }
-  onUpload(form: NgForm) {
+  onNext(form: NgForm) {
     if (form.invalid) {
       return (this.incompleteSubmit = true);
     }
-    const recipe: Recipe = {
-      allergens: [],
-      date: null,
-      description: form.value.description,
-      imageURL: '',
-      ingredients: [],
-      instructions: [],
-      name: form.value.name,
-      nutrition: {
-        calories: 0,
-        carbs: 0,
-        fat: 0,
-        protein: 0
-      }
-    };
-    this.auth.user$.subscribe(
-      user => {
-        if (user) {
-          recipe.userId = user.uid;
-          this.recipeSvc.createRecipe(recipe, this.selectedFile);
-          this.loc.go('');
-        }
-      },
-      err => {}
-    );
+    const recipe = new Recipe();
+    recipe.description = this.description;
+    recipe.name = this.name;
+    recipe.userId = this.user.uid;
+    this.builder.updateRecipe(recipe);
+    this.builder.setImage(this.selectedFile, this.localUrl, this.fileName);
+    this.router.navigate(['/new-recipe/step-2']);
   }
   onDeletePic(imageCtrl: NgModel) {
     imageCtrl.reset(); // Reset the form to empty so the user can choose another pic

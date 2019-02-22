@@ -1,18 +1,26 @@
+/**
+ * @file Main recipe service responsible for connecting to
+ * firestore and fetching, updating, creating and deleting
+ * recipes
+ * @author Luke Beach // lb580@kent.ac.uk
+ */
+
 import { Injectable, OnInit } from '@angular/core';
-import { Recipe } from './recipe.model';
+import { Recipe } from '../definitions/recipe.model';
 import { AngularFireStorage } from '@angular/fire/storage';
 import {
   AngularFirestore,
   AngularFirestoreCollection
 } from '@angular/fire/firestore';
 import { AuthService } from './auth.service';
-import { User } from './user.model';
+import { User } from '../definitions/user.model';
 import { NgxPicaService } from 'ngx-pica';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService implements OnInit {
+  newRecipe: Recipe;
   recipes: AngularFirestoreCollection<Recipe>;
   user: User;
 
@@ -43,7 +51,7 @@ export class RecipeService implements OnInit {
     return this.recipes;
   }
 
-  createRecipe(recipe: Recipe, image: File) {
+  uploadRecipe(recipe: Recipe, image: File) {
     recipe.date = new Date();
     const originalImage: File = image;
     if (image) {

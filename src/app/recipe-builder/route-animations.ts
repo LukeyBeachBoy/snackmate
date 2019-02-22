@@ -1,3 +1,9 @@
+/**
+ * @file Logic for the page transition animations in the
+ * recipe builder
+ * @author Luke Beach // lb580@kent.ac.uk
+ */
+
 import {
   trigger,
   transition,

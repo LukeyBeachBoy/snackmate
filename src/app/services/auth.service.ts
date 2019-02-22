@@ -1,3 +1,13 @@
+/**
+ * @file An authentication service that connects to
+ * firestore. Can log users in with 3rd party services
+ * or email/password. Provides a global access to the
+ * user observable that allows components to see if a user
+ * is logged in and, if so, access their data
+ *
+ * @author Luke Beach // lb580@kent.ac.uk
+ */
+
 import { Injectable } from '@angular/core';
 
 import { Router } from '@angular/router';
@@ -10,7 +20,7 @@ import {
 
 import { Observable, of, Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { User } from './user.model';
+import { User } from '../definitions/user.model';
 
 @Injectable({
   providedIn: 'root'
