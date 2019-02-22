@@ -8,7 +8,7 @@ hr {
 .recipeCard {
   display: flex;
   flex-direction: column;
-  max-width: 358px;
+  max-width: 332px;
   margin-top: 24px;
   margin-bottom: 24px;
   background-color: white;
@@ -37,7 +37,7 @@ hr {
 .userDate {
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 26% 50% 24%;
+  grid-template-columns: 26% auto 31%;
   align-items: center;
   .badge {
     font-weight: 300;
@@ -47,7 +47,7 @@ hr {
     color: $darkGrey;
     padding: 0;
     margin: 0;
-    height: 50%;
+    height: auto;
   }
 
   #userPic {
@@ -119,6 +119,7 @@ hr {
     h5 {
       color: $primaryColour;
       margin: 0 auto;
+      font-size: 1.15em;
       margin-top: 0.2em;
     }
     span {
@@ -167,12 +168,14 @@ hr {
       }
     }
     .likes {
-      img {
+      i {
+        color: $primaryColour;
         cursor: pointer;
       }
     }
     .comments {
-      img {
+      i {
+        color: $primaryColour;
         cursor: pointer;
       }
     }

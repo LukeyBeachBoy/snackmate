@@ -1,0 +1,98 @@
+<div class="container">
+  <div class="alert alert-warning" role="alert" *ngIf="incompleteSubmit" hidden>
+    Please complete the highlighted fields
+  </div>
+  <form
+    action=""
+    method="post"
+    enctype="multipart/form-data"
+    #form="ngForm"
+    (change)="checkStatus(form)"
+  >
+    <div class="nutrition">
+      <div class="calories">Calories: {{ totalNutrition.calories }}</div>
+      <div class="carbs">Carbs: {{ totalNutrition.carbs }}</div>
+      <div class="protein">Protein: {{ totalNutrition.protein }}</div>
+      <div class="fat">Fat: {{ totalNutrition.fat }}</div>
+    </div>
+
+    <div class="form-group">
+      <div class="recipeContainer">
+        <label class="ingredientLabel text-left" for="ingredient"
+          >Ingredient</label
+        >
+        <input
+          [(ngModel)]="input"
+          required
+          (keyup.enter)="
+            addIngredient({
+              name: ingredientInput.value,
+              amount: amountInput.value
+            })
+          "
+          class="form-control ingredientInput"
+          type="text"
+          name="ingredientInput"
+          id="ingredient"
+          placeholder="Example: 100g of chicken breast"
+          #ingredientInput="ngModel"
+          [ngClass]="{
+            'invalid-input': ingredientInput.invalid && incompleteSubmit
+          }"
+        />
+        <label class="amountLabel text-left" for="amount">Amount</label>
+        <input
+          [(ngModel)]="amount"
+          type="text"
+          ngModel
+          required
+          class="form-control amountInput"
+          name="amount"
+          id="amount"
+          placeholder="100g"
+          #amountInput="ngModel"
+          [ngClass]="{
+            'invalid-input': ingredientInput.invalid && incompleteSubmit
+          }"
+          (keyup.enter)="
+            addIngredient({
+              name: ingredientInput.value,
+              amount: amountInput.value
+            })
+          "
+        />
+        <i
+          (click)="
+            addIngredient({
+              name: ingredientInput.value,
+              amount: amountInput.value
+            })
+          "
+          class="fas fa-plus-circle addIngredient"
+        ></i>
+      </div>
+    </div>
+    <div class="ingredientsList">
+      <div *ngFor="let ingredient of ingredients">
+        <h6>{{ ingredient.amount }} {{ ingredient.name }}</h6>
+        <i
+          class="fas fa-times-circle"
+          (click)="removeIngredient(ingredient.id)"
+        ></i>
+      </div>
+    </div>
+    <div class="buttonBar" [ngClass]="{ repositionButton: localUrl !== '' }">
+      <button
+        type="button"
+        class="btn btn-primary"
+        [routerLink]="['/new-recipe']"
+        routerLinkActive="router-link-active"
+      >
+        Back
+      </button>
+      <a class="btn btn-primary" (click)="onSubmit()" routerLink="">
+        Submit
+      </a>
+    </div>
+  </form>
+</div>

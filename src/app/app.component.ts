@@ -1,3 +1,12 @@
+/**
+ * @file Main component logic, the only interesting
+ * point to note here is how I have used this component
+ * to check if the user clicks away from the sidebar,
+ * because during some user-testing it was recommended
+ * that closing the sidebar should be easier
+ * @author Luke Beach // lb580@kent.ac.uk
+ */
+
 import { Component, HostListener, OnInit } from '@angular/core';
 import { SidebarService } from './services/sidebar.service';
 import { Subject, Observable } from 'rxjs';
