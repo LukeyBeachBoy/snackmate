@@ -1,10 +1,18 @@
+/**
+ * @file Logic for populating the fields of recipe cards
+ * with data fetched from the database
+ * @author Luke Beach // lb580@kent.ac.uk
+ */
+
 import { Component, OnInit, Input } from '@angular/core';
-import { Recipe } from '../services/recipe.model';
+import { Recipe } from '../definitions/recipe.model';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { AuthService } from '../services/auth.service';
-import { User } from '../services/user.model';
+import { catchError } from 'rxjs/operators';
+import { User } from '../definitions/user.model';
 import { firestore } from 'firebase/app';
 import * as moment from 'moment';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-recipe-card',
@@ -29,17 +37,17 @@ export class RecipeCardComponent implements OnInit {
     if (this.recipe.userId) {
       this.auth.getUser(this.recipe.userId).subscribe((user: User) => {
         this.user = user as User;
-        this.storage
-          .ref(`users/${user.uid}.jpg`)
-          .getDownloadURL()
-          .subscribe(
-            userPicURL => {
-              this.userImageURL = userPicURL;
-            },
-            err => {
-              this.userImageURL = user.photoURL;
-            }
-          );
+        if (this.user.customPhoto) {
+          this.storage
+            .ref(`users/${user.uid}.jpg`)
+            .getDownloadURL()
+            .toPromise()
+            .then(userUrl => {
+              this.userImageURL = userUrl;
+            });
+        } else {
+          this.userImageURL = user.photoURL;
+        }
         this.storage
           .ref(`recipes/${this.recipe.recipeId}.jpg`)
           .getDownloadURL()

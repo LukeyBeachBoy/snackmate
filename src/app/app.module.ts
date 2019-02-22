@@ -15,7 +15,6 @@ import {
   AngularFireStorage
 } from '@angular/fire/storage';
 import { NgxPicaModule } from 'ngx-pica';
-
 import { AuthService } from './services/auth.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +26,8 @@ import { RecipeBuilderComponent } from './recipe-builder/recipe-builder.componen
 import { environment } from 'src/environments/environment';
 import { RecipeDetailsComponent } from './recipe-builder/recipe-details/recipe-details.component';
 import { RecipeInitialComponent } from './recipe-builder/recipe-initial/recipe-initial.component';
+import { NutritionixService } from './services/nutritionix.service';
+import { RecipeFinalComponent } from './recipe-builder/recipe-final/recipe-final.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { RecipeInitialComponent } from './recipe-builder/recipe-initial/recipe-i
     FeedComponent,
     RecipeBuilderComponent,
     RecipeDetailsComponent,
-    RecipeInitialComponent
+    RecipeInitialComponent,
+    RecipeFinalComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +54,7 @@ import { RecipeInitialComponent } from './recipe-builder/recipe-initial/recipe-i
     NgxPicaModule
   ],
   providers: [
+    NutritionixService,
     AngularFireStorage,
     AuthService,
     AngularFirestore,

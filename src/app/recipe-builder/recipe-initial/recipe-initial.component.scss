@@ -19,13 +19,16 @@ label {
   color: $darkGrey;
   font-size: 1.3em;
   .custom-file-label {
+    box-shadow: #0000002e 1px 3px 5px 1px !important;
     font-size: 1em !important;
   }
 }
 input {
+  box-shadow: #0000002e 1px 3px 5px 1px;
   .custom-file-input {
     font-size: 1em !important;
     width: 50%;
+    box-shadow: #0000002e 1px 3px 5px 1px;
   }
 }
 
@@ -43,6 +46,7 @@ input {
     width: 326px;
     height: 207px;
     background-color: $darkGrey;
+    object-fit: cover;
   }
   #deletePic {
     position: relative;
@@ -58,15 +62,22 @@ input {
   margin-bottom: 1em;
 }
 .custom-file-label {
+  box-shadow: #0000002e 1px 3px 5px 1px;
   overflow: hidden;
+  text-align: left;
+  font-size: 1.15em;
 }
 
 .buttonBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
+  white-space: nowrap;
   text-align: center;
-  button {
+  a {
     margin: 0.5em;
-    width: 40%;
+    color: #fff !important;
   }
 }
 
@@ -77,9 +88,5 @@ input {
 @media screen and (max-width: $mobileWidth) {
   .builder {
     width: 100%;
-  }
-  button {
-    width: 100% !important;
-    margin: 0.5em 0 !important;
   }
 }

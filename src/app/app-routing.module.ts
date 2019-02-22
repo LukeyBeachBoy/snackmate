@@ -1,3 +1,9 @@
+/**
+ * @file Router to manage the different routes in
+ * the app
+ * @author Luke Beach // lb580@kent.ac.uk
+ */
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FeedComponent } from './feed/feed.component';

@@ -1,9 +1,16 @@
+/**
+ * @file Logic for opening and closing the sidebar,
+ * AS WELL AS resizing it when the browser's dimensions
+ * change
+ * @author Luke Beach // lb580@kent.ac.uk
+ */
+
 import { Component, OnInit, HostListener } from '@angular/core';
 import * as $ from 'jquery';
 import { Observable } from 'rxjs';
 import { SidebarService } from '../services/sidebar.service';
 import { AuthService } from '../services/auth.service';
-import { User } from '../services/user.model';
+import { User } from '../definitions/user.model';
 import { Location } from '@angular/common';
 
 @Component({
@@ -103,8 +110,7 @@ export class SidebarComponent implements OnInit {
     this.onNav();
   }
 
-  onClose($event) {
-    event.preventDefault();
+  onClose() {
     this.sidebar.toggleSideBar();
   }
 }
