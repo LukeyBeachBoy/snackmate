@@ -4,13 +4,14 @@
  */
 import * as shortid from 'shortid';
 import * as _ from 'lodash';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NutritionixService } from '../../services/nutritionix.service';
 import { FoodData } from '../../definitions/nutritionData';
 import { Recipe } from 'src/app/definitions/recipe.model';
 import { BuilderService } from 'src/app/services/builder.service';
 import { RecipeService } from 'src/app/services/recipe.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-details',
@@ -18,6 +19,7 @@ import { RecipeService } from 'src/app/services/recipe.service';
   styleUrls: ['./recipe-details.component.scss']
 })
 export class RecipeDetailsComponent implements OnInit {
+  @ViewChild('form') ingredientForm: NgForm;
   totalNutrition = {
     calories: 0,
     carbs: 0,
@@ -29,20 +31,22 @@ export class RecipeDetailsComponent implements OnInit {
   incompleteSubmit = false;
   ingredients = [];
   constructor(
+    private router: Router,
     private recipeSvc: RecipeService,
     private nutritionix: NutritionixService,
     private builder: BuilderService
   ) {}
 
   ngOnInit() {}
-  checkStatus(form: NgForm) {
+  isValid(form: NgForm) {
     if (form.status === 'VALID') {
       this.incompleteSubmit = false;
+    } else {
+      this.incompleteSubmit = true;
     }
   }
   addIngredient(ingredient: { name: string; amount: string }) {
     /* ADD PLAIN STRING INGREDIENT TO LIST */
-
     this.input = ''; // Clear input fields
     this.amount = '';
     document.getElementById('ingredient').focus(); // Reset user cursor
@@ -101,29 +105,39 @@ export class RecipeDetailsComponent implements OnInit {
         });
     }
   }
-  removeIngredient(id) {
-    const oldNutritionalData = this.ingredients.find(function(ing) {
-      if (ing.id === id) {
-        return ing;
-      }
-    });
-    const index = this.ingredients.findIndex(
-      delIngredient => delIngredient.id === id
-    );
-    this.totalNutrition.calories -= oldNutritionalData.nutrition.cals;
-    this.totalNutrition.carbs -= oldNutritionalData.nutrition.carbs;
-    this.totalNutrition.protein -= oldNutritionalData.nutrition.protein;
-    this.totalNutrition.fat -= oldNutritionalData.nutrition.fat;
-    this.ingredients.splice(index, 1);
+  removeIngredient(id, ingredientElement) {
+    $(`#${ingredientElement}`).fadeOut();
+    setTimeout(() => {
+      const oldNutritionalData = this.ingredients.find(function(ing) {
+        if (ing.id === id) {
+          return ing;
+        }
+      });
+      const index = this.ingredients.findIndex(
+        delIngredient => delIngredient.id === id
+      );
+      this.totalNutrition.calories -= oldNutritionalData.nutrition.cals;
+      this.totalNutrition.carbs -= oldNutritionalData.nutrition.carbs;
+      this.totalNutrition.protein -= oldNutritionalData.nutrition.protein;
+      this.totalNutrition.fat -= oldNutritionalData.nutrition.fat;
+      this.ingredients.splice(index, 1);
+    }, 600);
   }
 
   onSubmit() {
-    const currentRecipe: Recipe = this.builder.getRecipe();
-    currentRecipe.nutrition = this.totalNutrition;
-    this.builder.updateRecipe(currentRecipe);
-    this.recipeSvc.uploadRecipe(
-      this.builder.getRecipe(),
-      this.builder.getImage().image
-    );
+    if (this.ingredients.length === 0 && this.incompleteSubmit === true) {
+      return;
+    } else {
+      const currentRecipe: Recipe = this.builder.getRecipe();
+      currentRecipe.nutrition = this.totalNutrition;
+      this.builder.updateRecipe(currentRecipe);
+      this.recipeSvc.uploadRecipe(
+        this.builder.getRecipe(),
+        this.builder.getImage().image
+      );
+      setTimeout(() => {
+        this.router.navigate(['']);
+      }, 2000);
+    }
   }
 }
