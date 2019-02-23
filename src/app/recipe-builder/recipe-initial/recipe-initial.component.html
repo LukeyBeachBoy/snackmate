@@ -17,6 +17,7 @@
         class="form-control"
         type="text"
         name="name"
+        maxlength="31"
         id="name"
         placeholder="Name"
         aria-describedby="nameHelp"
@@ -30,6 +31,7 @@
     <div class="form-group">
       <label for="description">What makes your recipe amazing?</label>
       <input
+        maxlength="125"
         [(ngModel)]="description"
         required
         class="form-control"
@@ -44,7 +46,7 @@
         }"
       />
       <small id="descriptionHelp" class="form-text text-muted"
-        >112 characters max</small
+        >125 characters max</small
       >
     </div>
     <label for="recipePic">Show it off with your best photo!</label>
