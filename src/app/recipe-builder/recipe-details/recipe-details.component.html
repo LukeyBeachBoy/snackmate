@@ -2,13 +2,7 @@
   <div class="alert alert-warning" role="alert" *ngIf="incompleteSubmit" hidden>
     Please complete the highlighted fields
   </div>
-  <form
-    action=""
-    method="post"
-    enctype="multipart/form-data"
-    #form="ngForm"
-    (change)="checkStatus(form)"
-  >
+  <form enctype="multipart/form-data" #form="ngForm">
     <div class="nutrition">
       <div class="calories">Calories: {{ totalNutrition.calories }}</div>
       <div class="carbs">Carbs: {{ totalNutrition.carbs }}</div>
@@ -22,6 +16,7 @@
           >Ingredient</label
         >
         <input
+          ngControl="name"
           [(ngModel)]="input"
           required
           (keyup.enter)="
@@ -42,6 +37,7 @@
         />
         <label class="amountLabel text-left" for="amount">Amount</label>
         <input
+          ngControl="amount"
           [(ngModel)]="amount"
           type="text"
           ngModel
@@ -73,11 +69,15 @@
       </div>
     </div>
     <div class="ingredientsList">
-      <div *ngFor="let ingredient of ingredients">
+      <div
+        id="ingredient{{ i }}"
+        #ingredientDiv
+        *ngFor="let ingredient of ingredients; let i = index"
+      >
         <h6>{{ ingredient.amount }} {{ ingredient.name }}</h6>
         <i
           class="fas fa-times-circle"
-          (click)="removeIngredient(ingredient.id)"
+          (click)="removeIngredient(ingredient.id, 'ingredient' + i)"
         ></i>
       </div>
     </div>
@@ -90,7 +90,7 @@
       >
         Back
       </button>
-      <a class="btn btn-primary" (click)="onSubmit()" routerLink="">
+      <a class="btn btn-primary" (click)="onSubmit()">
         Submit
       </a>
     </div>

@@ -64,7 +64,8 @@ label {
 .addIngredient {
   grid-column: submit;
   grid-row: inputs;
-  font-size: 1.5em;
+  color: #007bff;
+  font-size: 2.4em;
   cursor: pointer;
 }
 
@@ -94,15 +95,22 @@ label {
   div {
     padding: 0.5em;
     display: grid;
+    border: 1px dotted #00000045;
     align-items: center;
-    grid-template-columns: [blank]1fr [ingredient]auto [cross]1fr;
+    grid-template-columns: [blank] 1fr [ingredient] auto [cross] 1fr;
     h6 {
       grid-column: ingredient;
       text-align: center;
+      font-family: TWCenMT;
+      font-size: 1.7em;
       margin-bottom: 0 !important;
+      color: $darkGrey;
+      padding: 0 2em;
     }
     i {
       grid-column: cross;
+      color: #ff6060;
+      font-size: 2.2em;
       justify-self: end;
       cursor: pointer;
     }
@@ -116,7 +124,8 @@ label {
   width: 100%;
   white-space: nowrap;
   text-align: center;
-  button {
+  a {
     margin: 0.5em;
+    color: #fff !important;
   }
 }
