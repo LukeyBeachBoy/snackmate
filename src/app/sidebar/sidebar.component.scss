@@ -1,3 +1,4 @@
+@import '../../styles';
 $mobileWidth: 450px;
 
 #sidebarBtn {
@@ -28,6 +29,8 @@ $mobileWidth: 450px;
 }
 
 .sideMenu {
+  background-color: $darkPrimary;
+  box-shadow: #0000003d -4px 0px 11px 1px;
   transition: 0.5s cubic-bezier(0, 0, 0.3, 0.96) !important;
   height: 100%;
   // width: 0;
@@ -35,7 +38,6 @@ $mobileWidth: 450px;
   z-index: 3;
   top: 0;
   right: 0;
-  background-color: #ba4444;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 45px;
@@ -49,7 +51,7 @@ $mobileWidth: 450px;
       border-radius: 40px;
     }
     h4 {
-      font-family: "TwCenMT";
+      font-family: 'TwCenMT';
       margin: 0;
       color: mistyrose;
     }
@@ -65,7 +67,7 @@ $mobileWidth: 450px;
     color: #ffffff;
     cursor: pointer;
     display: block;
-    font-family: "TwCenMT";
+    font-family: 'TwCenMT';
     i {
       margin-left: 0.5em;
     }

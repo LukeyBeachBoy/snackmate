@@ -1,3 +1,4 @@
+@import '../../styles';
 $mq-responsive: true;
 $mq-breakpoints: (
   mobile: 320px,
@@ -9,8 +10,6 @@ $mq-breakpoints: (
 
 @import 'sass-mq';
 
-$primaryColour: #e26d6d;
-$darkGrey: #3f3f3fd1;
 $mobileWidth: 450px;
 
 .title {
