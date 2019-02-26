@@ -33,58 +33,22 @@ export class SidebarComponent implements OnInit {
     private $location: Location
   ) {}
 
-  @HostListener('window:resize', ['$event'])
-  resizeMenu() {
-    /**
-     * Check the 'mobile' class to see if the screen size
-     * and resize the sidebar if the client is on mobile/desktop
-     */
-    if ($('.mobile').css('float') === 'none') {
-      // Resize for mobile
-      $('#sideBar').css({ width: '196px' });
-    } else {
-      $('#sideBar').css({ width: '250px' });
-    }
-  }
-
   ngOnInit() {
     /* This is the function called each time the sidebar button is
      pressed */
     this.sidebar.getStatus().subscribe(() => {
       this.buttonToggle();
       // If mobile
-      if ($('.mobile').css('float') === 'none') {
-        if (!this.sidebarOpen) {
-          $('#sideBar')
-            .addClass('openMobile')
-            .removeClass('closedMobile')
-            .removeClass('open')
-            .removeClass('closed');
-          this.sidebarOpen = true;
-        } else {
-          $('#sideBar')
-            .addClass('closedMobile')
-            .removeClass('openedMobile')
-            .removeClass('open')
-            .removeClass('closed');
-          this.sidebarOpen = false;
-        }
+      if (!this.sidebarOpen) {
+        $('.sideMenu')
+          .addClass('open')
+          .removeClass('closed');
+        this.sidebarOpen = true;
       } else {
-        if (!this.sidebarOpen) {
-          $('#sideBar')
-            .addClass('opened')
-            .removeClass('closed')
-            .removeClass('closedMobile')
-            .removeClass('openMobile');
-          this.sidebarOpen = true;
-        } else {
-          $('#sideBar')
-            .addClass('closed')
-            .removeClass('opened')
-            .removeClass('closedMobile')
-            .removeClass('openMobile');
-          this.sidebarOpen = false;
-        }
+        $('.sideMenu')
+          .addClass('closed')
+          .removeClass('open');
+        this.sidebarOpen = false;
       }
     });
   }
