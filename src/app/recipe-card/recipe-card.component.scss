@@ -30,10 +30,18 @@ hr {
     margin: 0.5em -1.2em;
   }
 }
-#recipePic {
-  height: 11.1em;
-  object-fit: cover;
+
+.imageWrapper {
+  position: relative;
+  padding-top: 60.25%;
+  overflow: hidden;
   margin-bottom: 0.4em;
+}
+#recipePic {
+  position: absolute;
+  left: 0;
+  top: -12px;
+  width: 100%;
 }
 
 .userDate {
