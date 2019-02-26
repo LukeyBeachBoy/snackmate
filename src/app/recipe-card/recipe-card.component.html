@@ -2,15 +2,13 @@
   <div class="recipeHeader">
     <h6>{{ recipe.name || 'No name' }}</h6>
   </div>
-  <div class="imageWrapper">
-    <img
-      id="recipePic"
-      (load)="display()"
-      class="img-fluid"
-      src="{{ recipeImageURL }}"
-      alt=""
-    />
-  </div>
+  <img
+    id="recipePic"
+    (load)="display()"
+    class="img-fluid"
+    src="{{ recipeImageURL }}"
+    alt=""
+  />
   <div class="recipeBody">
     <div class="userDate">
       <img class="img-fluid" id="userPic" src="{{ userImageURL }}" alt="" />

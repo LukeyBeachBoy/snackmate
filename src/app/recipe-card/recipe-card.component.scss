@@ -31,17 +31,11 @@ hr {
   }
 }
 
-.imageWrapper {
-  position: relative;
-  padding-top: 60.25%;
-  overflow: hidden;
-  margin-bottom: 0.4em;
-}
 #recipePic {
-  position: absolute;
-  left: 0;
-  top: -12px;
-  width: 100%;
+  object-fit: cover;
+  width: 332px;
+  height: 177.594px;
+  margin-bottom: 0.5em;
 }
 
 .userDate {
