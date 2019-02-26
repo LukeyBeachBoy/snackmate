@@ -8,11 +8,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Recipe } from '../definitions/recipe.model';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { AuthService } from '../services/auth.service';
-import { catchError } from 'rxjs/operators';
 import { User } from '../definitions/user.model';
 import { firestore } from 'firebase/app';
 import * as moment from 'moment';
-import { of } from 'rxjs';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-recipe-card',
@@ -27,6 +26,7 @@ export class RecipeCardComponent implements OnInit {
   constructor(public storage: AngularFireStorage, private auth: AuthService) {}
 
   ngOnInit() {
+    $('.recipeCard').css('opacity', 0);
     if (this.recipe.date) {
       const timestamp: firestore.Timestamp = new firestore.Timestamp(
         ((this.recipe.date as unknown) as firestore.Timestamp).seconds,
@@ -56,5 +56,8 @@ export class RecipeCardComponent implements OnInit {
           });
       });
     }
+  }
+  display() {
+    $('.recipeCard').css('opacity', 100);
   }
 }
