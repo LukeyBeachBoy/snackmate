@@ -9,23 +9,8 @@ $mobileWidth: 450px;
   transform: translateX(0) !important;
 }
 
-.openedMobile {
-  transform: translateX(0) !important;
-}
-
 .closed {
   transform: translateX(250px) !important;
-}
-
-.closedMobile {
-  transform: translateX(196px) !important;
-}
-/*
-* This class will have these properties when in desktop mode.
-*/
-.mobile {
-  float: left;
-  z-index: -10;
 }
 
 .sideMenu {
@@ -33,7 +18,6 @@ $mobileWidth: 450px;
   box-shadow: #0000003d -4px 0px 11px 1px;
   transition: 0.5s cubic-bezier(0, 0, 0.3, 0.96) !important;
   height: 100%;
-  // width: 0;
   position: fixed;
   z-index: 3;
   top: 0;
@@ -102,9 +86,6 @@ $mobileWidth: 450px;
 }
 
 @media screen and (max-width: $mobileWidth) {
-  .mobile {
-    float: none;
-  }
   .closeBtn {
     i {
       width: 108px !important;
