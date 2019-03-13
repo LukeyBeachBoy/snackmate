@@ -13,6 +13,9 @@ $mobileWidth: 450px;
 @media screen and (max-width: $mobileWidth) {
   #recipeBoard {
     flex-direction: column;
+    app-recipe-card {
+      margin: 0 !important;
+    }
   }
 }
 @media screen and (max-width: 320px) {

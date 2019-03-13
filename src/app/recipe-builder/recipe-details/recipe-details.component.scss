@@ -1,0 +1,131 @@
+$primaryColour: #e26d6d;
+$darkGrey: #3f3f3fd1;
+$mobileWidth: 450px;
+
+.title {
+  font-size: 1.4em;
+  padding: 0.3em;
+  background-color: #6da8e2;
+  margin: 0 -15px 0.5em;
+  font-family: TwCenMT_Bold;
+}
+
+.alert {
+  transition: 1s;
+}
+
+label {
+  font-family: TWCenMT;
+  color: $darkGrey;
+  font-size: 1.3em;
+}
+
+.invalid-input {
+  border: 1px solid $primaryColour;
+  transition: 1s;
+}
+
+.recipeContainer {
+  display: grid;
+  align-items: center;
+  grid-template-columns: [ingredient] 2fr [amount] 0.5fr [submit] 0.25fr;
+  grid-template-rows: [labels] 1fr [inputs] 1fr;
+}
+
+.nutrition {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 0.3em;
+  padding: 0.2em;
+  div {
+    // General rules
+    box-shadow: #0000000a 2px 5px 2px 0px;
+    padding: 0.28em;
+    border-radius: 15px;
+    font-family: TWCenMT;
+    color: $darkGrey;
+    font-size: 1.2em;
+  }
+  .calories {
+    background-color: #abffc0cf;
+  }
+  .carbs {
+    background-color: #ffefaa;
+  }
+  .protein {
+    background-color: #ffadad;
+  }
+  .fat {
+    background-color: #936e045e;
+  }
+}
+
+.addIngredient {
+  grid-column: submit;
+  grid-row: inputs;
+  color: #007bff;
+  font-size: 2.4em;
+  cursor: pointer;
+}
+
+.ingredientInput {
+  grid-row: inputs;
+  grid-column: ingredient;
+}
+
+.ingredientLabel {
+  grid-row: labels;
+  grid-column: ingredient;
+}
+
+.amountInput {
+  grid-row: inputs;
+}
+
+.amountLabel {
+  grid-row: labels;
+}
+
+.ingredientsList {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  justify-content: center;
+  div {
+    padding: 0.5em;
+    display: grid;
+    border: 1px dotted #00000045;
+    align-items: center;
+    grid-template-columns: [blank] 1fr [ingredient] auto [cross] 1fr;
+    h6 {
+      grid-column: ingredient;
+      text-align: center;
+      font-family: TWCenMT;
+      font-size: 1.7em;
+      margin-bottom: 0 !important;
+      color: $darkGrey;
+      padding: 0 2em;
+    }
+    i {
+      grid-column: cross;
+      color: #ff6060;
+      font-size: 2.2em;
+      justify-self: end;
+      cursor: pointer;
+    }
+  }
+}
+
+.buttonBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  white-space: nowrap;
+  text-align: center;
+  a {
+    margin: 0.5em;
+    color: #fff !important;
+  }
+}

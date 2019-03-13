@@ -1,3 +1,14 @@
+$mq-responsive: true;
+$mq-breakpoints: (
+  mobile: 320px,
+  tablet: 740px,
+  desktop: 980px,
+  wide: 1300px,
+  mobileLandscape: 480px
+);
+
+@import 'sass-mq';
+
 $primaryColour: #e26d6d;
 $darkGrey: #3f3f3fd1;
 $mobileWidth: 450px;
@@ -6,83 +17,58 @@ $mobileWidth: 450px;
   font-size: 1.4em;
   padding: 0.3em;
   background-color: #6da8e2;
-  margin: 0 -15px 0.5em;
+  margin: 0 -15px;
   font-family: TwCenMT_Bold;
 }
 
-.alert {
-  transition: 1s;
+.progressContainer {
+  box-shadow: #0000000a 0px 5px 11px 1px;
+  margin: 0 -15px;
+  background-color: white;
 }
 
-label {
-  font-family: TWCenMT;
-  color: $darkGrey;
-  font-size: 1.3em;
-  .custom-file-label {
-    font-size: 1em !important;
-  }
-}
-input {
-  .custom-file-input {
-    font-size: 1em !important;
-    width: 50%;
-  }
-}
-
-.invalid-input {
-  border: 1px solid $primaryColour;
-  transition: 1s;
-}
-
-.imageArea {
+.progressBar {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  img {
-    width: 326px;
-    height: 207px;
-    background-color: $darkGrey;
+  flex-direction: row;
+  justify-content: center;
+  a {
+    pointer-events: none;
+    text-decoration: none;
+    font-family: TWCenMT;
+    font-size: 1.4rem;
+    color: $primaryColour;
+    display: flex;
+    align-items: center;
+    height: 1.5em;
+    cursor: default;
+    border-radius: 0px;
   }
-  #deletePic {
-    position: relative;
-    bottom: 5em;
-    font-size: 2.7em;
-    left: 3.5em;
-    color: #e36664;
-    cursor: pointer;
+  .nav-link:not(.active):hover {
+    border-color: rgba(255, 255, 255, 0) !important;
+  }
+  .active {
+    color: #6da8e2;
   }
 }
 
 .builder {
-  margin: auto;
-  width: 35%;
-  .custom-file {
-    margin-bottom: 1em;
-  }
-  .custom-file-label {
-    overflow: hidden;
-  }
-}
-.buttonBar {
-  width: 100%;
+  position: relative;
   text-align: center;
-  button {
-    margin: 0.5em;
-    width: 40%;
-  }
+  margin: auto;
 }
 
-.repositionButton {
-  margin-top: -43.2px !important;
-}
-
-@media screen and (max-width: $mobileWidth) {
+@include mq($until: tablet) {
   .builder {
     width: 100%;
   }
-  button {
-    width: 100% !important;
-    margin: 0.5em 0 !important;
+}
+@include mq(tablet, desktop) {
+  .builder {
+    width: 65%;
+  }
+}
+@include mq(desktop) {
+  .builder {
+    width: 50%;
   }
 }

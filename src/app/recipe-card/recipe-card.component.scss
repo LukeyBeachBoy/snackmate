@@ -8,7 +8,7 @@ hr {
 .recipeCard {
   display: flex;
   flex-direction: column;
-  max-width: 358px;
+  max-width: 332px;
   margin-top: 24px;
   margin-bottom: 24px;
   background-color: white;
@@ -22,6 +22,7 @@ hr {
       margin: 0;
       font-size: 29px;
       color: white;
+      text-shadow: 0px 2px 1px #0000001a;
     }
   }
   hr {
@@ -37,7 +38,7 @@ hr {
 .userDate {
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 26% 50% 24%;
+  grid-template-columns: 26% auto 31%;
   align-items: center;
   .badge {
     font-weight: 300;
@@ -47,7 +48,7 @@ hr {
     color: $darkGrey;
     padding: 0;
     margin: 0;
-    height: 50%;
+    height: auto;
   }
 
   #userPic {
@@ -70,7 +71,7 @@ hr {
 #wrapper {
   display: grid;
   grid-template-columns: 62% 38%;
-  grid-template-rows: 7.3em auto;
+  grid-template-rows: 7.8em auto;
   grid-template-areas:
     'description nutrition'
     'allergens nutrition';
@@ -82,7 +83,7 @@ hr {
       color: $primaryColour;
     }
     #recipeDescription {
-      height: 65.5px;
+      height: 96.5px;
       overflow: hidden;
     }
   }
@@ -119,6 +120,7 @@ hr {
     h5 {
       color: $primaryColour;
       margin: 0 auto;
+      font-size: 1.15em;
       margin-top: 0.2em;
     }
     span {
@@ -167,12 +169,14 @@ hr {
       }
     }
     .likes {
-      img {
+      i {
+        color: $primaryColour;
         cursor: pointer;
       }
     }
     .comments {
-      img {
+      i {
+        color: $primaryColour;
         cursor: pointer;
       }
     }

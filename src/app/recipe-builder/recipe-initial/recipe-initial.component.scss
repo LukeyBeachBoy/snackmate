@@ -1,0 +1,92 @@
+$primaryColour: #e26d6d;
+$darkGrey: #3f3f3fd1;
+$mobileWidth: 450px;
+
+.title {
+  font-size: 1.4em;
+  padding: 0.3em;
+  background-color: #6da8e2;
+  margin: 0 -15px 0.5em;
+  font-family: TwCenMT_Bold;
+}
+
+.alert {
+  transition: 1s;
+}
+
+label {
+  font-family: TWCenMT;
+  color: $darkGrey;
+  font-size: 1.3em;
+  .custom-file-label {
+    box-shadow: #0000002e 1px 3px 5px 1px !important;
+    font-size: 1em !important;
+  }
+}
+input {
+  box-shadow: #0000002e 1px 3px 5px 1px;
+  .custom-file-input {
+    font-size: 1em !important;
+    width: 50%;
+    box-shadow: #0000002e 1px 3px 5px 1px;
+  }
+}
+
+.invalid-input {
+  border: 1px solid $primaryColour;
+  transition: 1s;
+}
+
+.imageArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  img {
+    width: 326px;
+    height: 207px;
+    background-color: $darkGrey;
+    object-fit: cover;
+  }
+  #deletePic {
+    position: relative;
+    bottom: 5em;
+    font-size: 2.7em;
+    left: 3.5em;
+    color: #e36664;
+    cursor: pointer;
+  }
+}
+
+.custom-file {
+  margin-bottom: 1em;
+}
+.custom-file-label {
+  box-shadow: #0000002e 1px 3px 5px 1px;
+  overflow: hidden;
+  text-align: left;
+  font-size: 1.15em;
+}
+
+.buttonBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  white-space: nowrap;
+  text-align: center;
+  a {
+    margin: 0.5em;
+    color: #fff !important;
+  }
+}
+
+.repositionButton {
+  margin-top: -43.2px !important;
+}
+
+@media screen and (max-width: $mobileWidth) {
+  .builder {
+    width: 100%;
+  }
+}
