@@ -13,16 +13,13 @@ import {
   AngularFirestoreCollection
 } from '@angular/fire/firestore';
 import { AuthService } from './auth.service';
-import { User } from '../definitions/user.model';
 import { NgxPicaService } from 'ngx-pica';
-import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService implements OnInit {
   newRecipe: Recipe;
   recipes: AngularFirestoreCollection<Recipe>;
-  user: User;
 
   constructor(
     private pica: NgxPicaService,
@@ -33,13 +30,7 @@ export class RecipeService implements OnInit {
     this.recipes = db.collection<Recipe>('/recipes');
   }
 
-  ngOnInit() {
-    this.auth.user$.subscribe(user => {
-      if (user) {
-        this.user = user;
-      }
-    });
-  }
+  ngOnInit() {}
 
   /**
    * @description Returns a list of all recipes in date order
@@ -63,5 +54,46 @@ export class RecipeService implements OnInit {
         });
       });
     }
+  }
+
+  upvoteRecipe(recipeID: string) {
+    let likedRecipes: Array<string>;
+    this.auth.user$.subscribe(user => {
+      if (user !== null) {
+        this.recipes
+          .doc(`${recipeID}`)
+          .get()
+          .subscribe(recipe => {
+            const likes = recipe.get('likes');
+            if (user.likedRecipes) {
+              likedRecipes = user.likedRecipes;
+              if (likedRecipes.includes(recipeID)) {
+                // If the user has liked this before, decrease the like count because they are now unliking it
+                this.recipes.doc(`${recipeID}`).update({ likes: likes - 1 });
+                const removed = likedRecipes.splice(
+                  likedRecipes.indexOf(recipeID)
+                );
+                this.db.doc(`/users/${user.uid}`).set(
+                  {
+                    likedRecipes: removed
+                  },
+                  { merge: true }
+                );
+              } else {
+                // If they haven't liked this recipe yet, then upvote it
+                this.recipes.doc(`${recipeID}`).update({ likes: likes + 1 });
+                likedRecipes.push(recipeID);
+                this.db.doc(`/users/${user.uid}`).set({ likedRecipes });
+              }
+            } else {
+              likedRecipes = [recipeID];
+              this.recipes.doc(`${recipeID}`).update({ likes: likes + 1 });
+              this.db.doc(`/users/${user.uid}`).set({ likedRecipes });
+            }
+          });
+      } else {
+        console.log('not logged in');
+      }
+    });
   }
 }
