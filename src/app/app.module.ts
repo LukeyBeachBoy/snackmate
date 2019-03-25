@@ -28,6 +28,8 @@ import { RecipeDetailsComponent } from './recipe-builder/recipe-details/recipe-d
 import { RecipeInitialComponent } from './recipe-builder/recipe-initial/recipe-initial.component';
 import { NutritionixService } from './services/nutritionix.service';
 import { RecipeFinalComponent } from './recipe-builder/recipe-final/recipe-final.component';
+import { SearchComponent } from './search/search.component';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { RecipeFinalComponent } from './recipe-builder/recipe-final/recipe-final
     RecipeBuilderComponent,
     RecipeDetailsComponent,
     RecipeInitialComponent,
-    RecipeFinalComponent
+    RecipeFinalComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

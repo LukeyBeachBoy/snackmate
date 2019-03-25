@@ -1,0 +1,87 @@
+$primaryColour: #e26d6d;
+$darkGrey: #3f3f3fd1;
+
+.header {
+  background-color: $primaryColour;
+  box-shadow: #0000003b 0px 5px 11px 1px;
+  height: 56px;
+  margin: 0 -15px;
+  i {
+    width: 23.1px;
+    cursor: pointer;
+    position: relative;
+    top: 0.5em;
+    right: 1em;
+    font-size: 1.7em;
+    float: right;
+    color: white;
+  }
+  a {
+    font-family: 'TwCenMT_Bold';
+    color: white;
+    margin-bottom: 0;
+    font-size: 31px;
+    text-decoration: none;
+    position: relative;
+    text-shadow: 0px 3px 8px #00000038;
+    top: 0.14em;
+    left: 0.4em;
+    cursor: pointer;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #2196F3;
+  color: white;
+}
+
+.topnav .search-container {
+  float: centre;
+}
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.topnav .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 40px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+}
