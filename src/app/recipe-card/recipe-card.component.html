@@ -6,7 +6,7 @@
   <div class="recipeBody">
     <div class="userDate">
       <img class="img-fluid" id="userPic" src="{{ userImageURL }}" alt="" />
-      <h5>{{ user?.displayName }}</h5>
+      <h5><a routerLink="user/{{ user?.uid }}">{{ user?.displayName }}</a></h5>
       <span class="badge badge-primary badge-pill"
         >{{ recipe.nutrition?.calories || '' }} Calories</span
       >
