@@ -1,5 +1,5 @@
 /**
- * @file Logic for populating the fields of recipe cards
+ * @file Logic for User Profiles
  * with data fetched from the database
  * @author Juned Hussain // jh815@kent.ac.uk
  */
