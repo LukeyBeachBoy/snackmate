@@ -2,6 +2,7 @@
  * @file Router to manage the different routes in
  * the app
  * @author Luke Beach // lb580@kent.ac.uk
+ * @author Juned Hussain // jh815@kent.ac.uk
  */
 
 import { NgModule } from '@angular/core';
@@ -11,6 +12,7 @@ import { RecipeBuilderComponent } from './recipe-builder/recipe-builder.componen
 import { RecipeDetailsComponent } from './recipe-builder/recipe-details/recipe-details.component';
 import { RecipeInitialComponent } from './recipe-builder/recipe-initial/recipe-initial.component';
 import { RecipeFinalComponent } from './recipe-builder/recipe-final/recipe-final.component';
+import { UserprofilesComponent } from './userprofiles/userprofiles.component';
 
 const routes: Routes = [
   { path: '', component: FeedComponent },
@@ -35,6 +37,7 @@ const routes: Routes = [
       }
     ]
   },
+  { path: 'user/:id', component: UserprofilesComponent },
   { path: '**', redirectTo: '' }
 ];
 

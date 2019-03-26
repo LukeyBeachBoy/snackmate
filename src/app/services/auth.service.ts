@@ -6,6 +6,7 @@
  * is logged in and, if so, access their data
  *
  * @author Luke Beach // lb580@kent.ac.uk
+ * @author Juned Hussain // jh815@kent.ac.uk
  */
 
 import { Injectable } from '@angular/core';
@@ -64,7 +65,9 @@ export class AuthService {
       uid,
       email,
       displayName,
-      photoURL
+      photoURL,
+      following: [],
+      followers: []
     };
 
     return userRef.set(data, { merge: true });
