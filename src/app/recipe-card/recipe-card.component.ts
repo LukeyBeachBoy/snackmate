@@ -12,6 +12,7 @@ import { User } from '../definitions/user.model';
 import { firestore } from 'firebase/app';
 import * as moment from 'moment';
 import * as $ from 'jquery';
+import { RecipeService } from '../services/recipe.service';
 
 @Component({
   selector: 'app-recipe-card',
@@ -23,11 +24,17 @@ export class RecipeCardComponent implements OnInit {
   recipeImageURL: string;
   userImageURL: string;
   user: User;
-  constructor(public storage: AngularFireStorage, private auth: AuthService) {}
+  constructor(
+    public storage: AngularFireStorage,
+    private auth: AuthService,
+    private RecipeSvc: RecipeService
+  ) {}
 
   ngOnInit() {
     $('.recipeCard').css('opacity', 0);
     if (this.recipe.date) {
+      /* Cheeky way to get the date uploaded from firestore (don't trust the users)
+       then parse it as a timestamp, then convert it to a text equivalent */
       const timestamp: firestore.Timestamp = new firestore.Timestamp(
         ((this.recipe.date as unknown) as firestore.Timestamp).seconds,
         ((this.recipe.date as unknown) as firestore.Timestamp).nanoseconds
@@ -59,5 +66,9 @@ export class RecipeCardComponent implements OnInit {
   }
   display() {
     $('.recipeCard').css('opacity', 100);
+  }
+  onLike() {
+    event.preventDefault();
+    this.RecipeSvc.upvoteRecipe(this.recipe.recipeId);
   }
 }

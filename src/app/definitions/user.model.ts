@@ -11,4 +11,5 @@ export interface User {
   photoURL?: string;
   customPhoto?: string;
   displayName?: string;
+  likedRecipes?: Array<string>;
 }

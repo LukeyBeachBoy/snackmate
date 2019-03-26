@@ -7,7 +7,6 @@
  */
 
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Recipe } from '../definitions/recipe.model';
 
 @Injectable({

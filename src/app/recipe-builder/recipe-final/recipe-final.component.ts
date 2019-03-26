@@ -5,6 +5,8 @@
 
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/definitions/user.model';
 
 @Component({
   selector: 'app-recipe-final',
@@ -12,12 +14,22 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./recipe-final.component.scss']
 })
 export class RecipeFinalComponent implements OnInit {
-  constructor() {}
+  user: User;
+  incompleteSubmit = false;
+  constructor(private auth: AuthService) {}
 
-  ngOnInit() {}
-
+  ngOnInit() {
+    this.auth.user$.subscribe(user => {
+      this.user = user;
+    });
+  }
   onUpload(form: NgForm) {
     // this.recipeSvc.uploadRecipe(recipe, this.selectedFile);
     // this.loc.go('');
+  }
+  checkStatus(form: NgForm) {
+    if (form.status === 'VALID') {
+      this.incompleteSubmit = false;
+    }
   }
 }
