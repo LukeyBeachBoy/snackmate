@@ -56,27 +56,21 @@ export class AuthService {
     return this.router.navigate(['/']);
   }
 
-  private updateUserData({ uid, email, displayName, photoURL}: User) {
+  private updateUserData({ uid, email, displayName, photoURL }: User) {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(
       `users/${uid}`
     );
-	
-	
 
     const data = {
       uid,
       email,
       displayName,
       photoURL,
-	  following: [],
-	  followers: []
+      following: [],
+      followers: []
     };
-	
-	
-	
-	
 
-    return userRef.set(data, {merge: true});
+    return userRef.set(data, { merge: true });
   }
 
   public getUser(uid: string) {
