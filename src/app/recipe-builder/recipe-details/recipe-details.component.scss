@@ -1,4 +1,4 @@
-@import '../../../styles';
+@import "../../../styles";
 $mobileWidth: 450px;
 
 .title {
@@ -94,7 +94,7 @@ label {
   div {
     padding: 0.5em;
     display: grid;
-    border: 1px dotted #00000045;
+    border: 1px dotted #0000002e;
     align-items: center;
     grid-template-columns: [blank] 1fr [ingredient] auto [cross] 1fr;
     h6 {

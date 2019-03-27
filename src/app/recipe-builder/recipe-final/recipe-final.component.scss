@@ -1,1 +1,52 @@
-@import '../../../styles';
+@import "../../../styles";
+
+a {
+  margin: 0.5em;
+  color: #fff !important;
+}
+
+#instructionInput {
+  padding-top: 25px;
+  justify-content: flex-start;
+  line-height: 24px;
+  margin: 0px 0px 16px;
+  padding: 25px 0px 0px;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  i {
+    color: #007bff;
+    font-size: 2.4em;
+    line-height: 17px;
+    margin: 0px 0px 0px 10px;
+    cursor: pointer;
+  }
+}
+
+.container {
+  background: white;
+  margin-top: 0.5em;
+  border-radius: 12px;
+  box-shadow: 0 4px 7px 3px #00000026;
+}
+
+.instructions {
+  border: 1px dotted #0000002e;
+}
+.instruction {
+  display: grid;
+  grid-template-columns: 15% 85%;
+  font-family: "TWCenMT";
+  font-size: 1.6em;
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 0.5em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.157);
+  #step {
+    color: $primaryColour;
+  }
+  #instructionText {
+    overflow-wrap: break-word;
+    text-align: left;
+  }
+}

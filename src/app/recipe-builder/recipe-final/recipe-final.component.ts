@@ -14,14 +14,25 @@ import { User } from 'src/app/definitions/user.model';
   styleUrls: ['./recipe-final.component.scss']
 })
 export class RecipeFinalComponent implements OnInit {
+  instructions = [];
   user: User;
+  input = '';
   incompleteSubmit = false;
+  count = 0;
   constructor(private auth: AuthService) {}
 
   ngOnInit() {
     this.auth.user$.subscribe(user => {
       this.user = user;
     });
+  }
+  newInstruction() {
+    if (this.input !== '') {
+      this.count++;
+      this.instructions.push(this.input);
+      this.input = '';
+    } else {
+    }
   }
   onUpload(form: NgForm) {
     // this.recipeSvc.uploadRecipe(recipe, this.selectedFile);

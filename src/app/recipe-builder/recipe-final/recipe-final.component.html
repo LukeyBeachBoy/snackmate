@@ -2,20 +2,35 @@
   <div class="alert alert-warning" role="alert" *ngIf="incompleteSubmit" hidden>
     Please complete the highlighted fields
   </div>
-  <div class="form-group">
-    <i class="fas fa-plus-circle addIngredient"></i>
-    <div class="buttonBar" [ngClass]="{ repositionButton: localUrl !== '' }">
-      <button
-        type="button"
-        class="btn btn-primary"
-        [routerLink]="['/new-recipe']"
-        routerLinkActive="router-link-active"
-      >
-        Back
-      </button>
-      <a class="btn btn-primary">
-        Submit
-      </a>
+  <div id="instructionInput">
+    <input
+      [(ngModel)]="input"
+      type="text"
+      class="form-control"
+      id="input"
+      placeholder="Enter instruction"
+      (keyup.enter)="newInstruction()"
+    />
+    <i class="fas fa-plus-circle addIngredient" (click)="newInstruction()"></i>
+  </div>
+  <div *ngIf="instructions.length > 0" class="instructions">
+    <div
+      *ngFor="let instruction of instructions; let i = index"
+      class="instruction"
+    >
+      <span id="step">Step {{ i + 1 }}: </span>
+      <span id="instructionText">{{ instruction }}</span>
     </div>
   </div>
+  <button
+    type="button"
+    class="btn btn-primary"
+    [routerLink]="['/new-recipe']"
+    routerLinkActive="router-link-active"
+  >
+    Back
+  </button>
+  <a class="btn btn-primary">
+    Finished
+  </a>
 </div>
