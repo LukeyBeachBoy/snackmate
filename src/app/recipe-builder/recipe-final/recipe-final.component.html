@@ -17,20 +17,26 @@
     <div
       *ngFor="let instruction of instructions; let i = index"
       class="instruction"
+      id="{{ i }}"
     >
       <span id="step">Step {{ i + 1 }}: </span>
       <span id="instructionText">{{ instruction }}</span>
+      <div class="move">
+        <i class="fas fa-arrow-circle-up arrow" (click)="moveUp(i)"></i>
+        <i class="fas fa-times-circle" (click)="removeInstruction(i)"></i>
+        <i class="fas fa-arrow-circle-down arrow" (click)="moveDown(i)"></i>
+      </div>
     </div>
   </div>
   <button
     type="button"
     class="btn btn-primary"
-    [routerLink]="['/new-recipe']"
+    [routerLink]="['/new-recipe/ingredients']"
     routerLinkActive="router-link-active"
   >
     Back
   </button>
-  <a class="btn btn-primary">
+  <a (click)="onUpload()" class="btn btn-primary">
     Finished
   </a>
 </div>

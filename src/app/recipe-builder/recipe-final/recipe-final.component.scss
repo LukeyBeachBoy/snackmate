@@ -35,7 +35,8 @@ a {
 }
 .instruction {
   display: grid;
-  grid-template-columns: 15% 85%;
+  align-items: center;
+  grid-template-columns: 14% 80% 6%;
   font-family: "TWCenMT";
   font-size: 1.6em;
   background-color: rgb(255, 255, 255);
@@ -48,5 +49,18 @@ a {
   #instructionText {
     overflow-wrap: break-word;
     text-align: left;
+  }
+  .move {
+    display: flex;
+    flex-direction: column;
+  }
+  i {
+    color: #e64a4d;
+    cursor: pointer;
+    margin: 0.05em 0;
+  }
+  .arrow {
+    color: rgba(59, 59, 59, 0.78);
+    font-size: 0.8em;
   }
 }
