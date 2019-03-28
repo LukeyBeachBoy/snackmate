@@ -62,19 +62,16 @@ export class AuthService {
     );
 
     userRef.get().subscribe(user => {
- 
-      const followers = user.get("followers");
+      const followers = user.get('followers');
       if (followers) {
         const data = {
           uid,
           email,
           displayName,
-          photoURL,
-        
+          photoURL
         };
         return userRef.set(data, { merge: true });
-      }
-      else {
+      } else {
         const data = {
           uid,
           email,
@@ -85,17 +82,7 @@ export class AuthService {
         };
         return userRef.set(data, { merge: true });
       }
-      
     });
-
-
-  
-
-
-
-
-
-   
   }
 
   public getUser(uid: string) {
