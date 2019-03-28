@@ -28,7 +28,7 @@
 
   <ng-template #loggedIn>
     <ng-container *ngTemplateOutlet="noAuthNeeded"></ng-container>
-    <a routerLink="" (click)="onNav()">Profile <i class="fas fa-user"></i></a>
+    <a routerLink="/user/{{ user.uid }}">Profile <i class="fas fa-user"></i></a>
     <a routerLink="/new-recipe" (click)="onNav()"
       >Create Recipe <i class="fas fa-pen-square"></i
     ></a>

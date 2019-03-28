@@ -19,7 +19,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  user: Observable<User>;
+  user: User;
   default = {
     displayName: 'Not logged in',
     photoURL: 'assets/user.png',
@@ -36,6 +36,9 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
     /* This is the function called each time the sidebar button is
      pressed */
+    this.auth.user$.subscribe(loggedUser => {
+      this.user = loggedUser;
+    });
     this.sidebar.getStatus().subscribe(() => {
       this.buttonToggle();
       // If mobile

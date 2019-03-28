@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>{{recipe?.name}}</h2>
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+              <img  src="{{recipeImageURL}}.jpg" class="d-block w-100 rounded" alt="...">
+          </div>
+        </div>
+      </div>
+      <h2> <span class="badge {{calories}} badge-secondary">{{recipe?.nutrition.calories}} calories</span></h2>
+      <h3> <span class="badge {{protein}} badge-secondary">{{recipe?.nutrition.protein}}g</span> protein</h3>
+      <h3> <span class="badge {{fat}} badge-secondary">{{recipe?.nutrition.fat}}g</span> fat</h3>
+      <h3> <span class="badge {{carbs}} badge-secondary">{{recipe?.nutrition.carbs}}g</span> carbs</h3>
+
+     
+ 
+    </div>
+    <div class="col">
+     <br/>
+        <h5>Description</h5>
+        <div class="card" style="width: 25rem;">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">{{recipe?.description}}</li>
+              
+            </ul>
+          </div>
+          <br/>
+     <h5>Instructions</h5>
+     <div class="card" style="width: 25rem;">
+      <ul class="list-group list-group-flush">
+        <li *ngFor="let instruction of instructions; let i = index" class="list-group-item"><b>Step {{i + 1}}: </b>{{instruction}}</li>
+   
+      </ul>
+    </div>
+    
+    </div>
+  </div>
+  </div>

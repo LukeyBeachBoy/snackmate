@@ -1,0 +1,31 @@
+<br/>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+   <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{user?.photoURL}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{user?.displayName}} <span class="badge badge-secondary">{{recipeCount}} Recipes</span></h5>
+    <p class="card-text">Welcome to {{user?.displayName}}'s profile page. Follow them to get notifications of future recipes they post.</p>
+    <a href="#" class="btn btn-primary">Follow <span class="badge badge-secondary">5</span></a>
+  </div>
+</div>
+    </div>
+    <div class="col-sm">
+	<h5>{{user?.displayName}}'s latest recipes</h5>
+<div class="list-group">
+  <a *ngFor="let recipe of prevRecipes; let i = index" href="#" routerLink ="../../recipe/{{recipe?.recipeId}}" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{recipe?.name}}</h5>
+      <small>{{timestamps[i].date}}</small>
+    </div>
+    <p class="mb-1">A beautiful Indian butter chicken curry that ticks all of the boxes</p>
+    <small><span class="badge badge-pill badge-primary">{{recipe?.nutrition.calories}} calories</span></small>
+  </a>
+</div>
+<br/>
+    </div>
+
+  </div>
+</div>

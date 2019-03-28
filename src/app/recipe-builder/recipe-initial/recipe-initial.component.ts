@@ -3,7 +3,6 @@
  * @author Luke Beach // lb580@kent.ac.uk
  */
 
-
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 import { NgForm, NgModel } from '@angular/forms';
@@ -69,6 +68,7 @@ export class RecipeInitialComponent implements OnInit {
     }
   }
   onNext(form: NgForm) {
+    event.preventDefault();
     if (form.invalid) {
       return (this.incompleteSubmit = true);
     }
@@ -78,8 +78,9 @@ export class RecipeInitialComponent implements OnInit {
     recipe.userId = this.user.uid;
     this.builder.updateRecipe(recipe);
     this.builder.setImage(this.selectedFile, this.localUrl, this.fileName);
-    this.router.navigate(['/new-recipe/step-2']);
+    this.router.navigate(['/new-recipe/ingredients']);
   }
+
   onDeletePic(imageCtrl: NgModel) {
     imageCtrl.reset(); // Reset the form to empty so the user can choose another pic
     this.localUrl = ''; // Tell other elements that the url is empty so they can update

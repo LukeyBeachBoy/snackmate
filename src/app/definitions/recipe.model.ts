@@ -25,4 +25,5 @@ export class Recipe {
   };
   recipeId?: string;
   userId?: string;
+  likes?: number;
 }

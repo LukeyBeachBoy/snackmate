@@ -1,4 +1,4 @@
-@import '../../../styles';
+@import "../../../styles";
 $mobileWidth: 450px;
 
 .title {
@@ -19,15 +19,24 @@ label {
   font-size: 1.3em;
 }
 
+form {
+  background: white;
+  margin-top: 0.5em;
+  border-radius: 12px;
+  box-shadow: 0 4px 7px 3px #00000026;
+  padding: 0.4em;
+}
+
 .invalid-input {
   border: 1px solid $primaryColour;
   transition: 1s;
 }
 
 .recipeContainer {
+  padding-left: 0.5em;
   display: grid;
   align-items: center;
-  grid-template-columns: [ingredient] 2fr [amount] 0.5fr [submit] 0.25fr;
+  grid-template-columns: [ingredient] 75% [amount] 15% [submit] 10%;
   grid-template-rows: [labels] 1fr [inputs] 1fr;
 }
 
@@ -94,7 +103,7 @@ label {
   div {
     padding: 0.5em;
     display: grid;
-    border: 1px dotted #00000045;
+    border: 1px dotted #0000002e;
     align-items: center;
     grid-template-columns: [blank] 1fr [ingredient] auto [cross] 1fr;
     h6 {
