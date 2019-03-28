@@ -25,6 +25,7 @@ import { stringify } from 'querystring';
 })
 export class UserprofilesComponent implements OnInit {
 
+  recipes = [];
   userImageURL: string;
   user: User;
   recipeCount: number;
@@ -33,6 +34,7 @@ export class UserprofilesComponent implements OnInit {
   }
 
   ngOnInit() {
+    
     this.route.params.subscribe(params =>
       this.auth.getUser(params.id).subscribe((user) => {
         this.user = user as User;
