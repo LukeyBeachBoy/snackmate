@@ -1,5 +1,4 @@
-$primaryColour: #e26d6d;
-$darkGrey: #3f3f3fd1;
+@import "../../../styles";
 $mobileWidth: 450px;
 
 .title {
@@ -84,7 +83,13 @@ input {
 .repositionButton {
   margin-top: -43.2px !important;
 }
-
+.container {
+  background: white;
+  margin-top: 0.5em;
+  border-radius: 12px;
+  box-shadow: 0 4px 7px 3px #00000026;
+  padding: 1em;
+}
 @media screen and (max-width: $mobileWidth) {
   .builder {
     width: 100%;

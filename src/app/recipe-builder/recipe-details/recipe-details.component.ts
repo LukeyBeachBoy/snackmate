@@ -131,13 +131,7 @@ export class RecipeDetailsComponent implements OnInit {
       const currentRecipe: Recipe = this.builder.getRecipe();
       currentRecipe.nutrition = this.totalNutrition;
       this.builder.updateRecipe(currentRecipe);
-      this.recipeSvc.uploadRecipe(
-        this.builder.getRecipe(),
-        this.builder.getImage().image
-      );
-      setTimeout(() => {
-        this.router.navigate(['']);
-      }, 2000);
+      this.router.navigate(['/new-recipe/instructions']);
     }
   }
 }
