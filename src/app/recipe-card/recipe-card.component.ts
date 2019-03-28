@@ -66,7 +66,49 @@ export class RecipeCardComponent implements OnInit {
        case(amount_carbs<50):
        this.carbs = 'badge-success';
        break;
+       case(amount_carbs<100):
+       this.carbs = 'badge-primary';
+       break;
+       case(amount_carbs<200):
+       this.carbs = 'badge-warning';
+       break;
+       case(amount_carbs>=200):
+       this.carbs = 'badge-danger';
+       break;
      }
+
+     switch(true)
+     {
+       case(amount_fat<50):
+       this.fat = 'badge-success';
+       break;
+       case(amount_fat<100):
+       this.carbs = 'badge-primary';
+       break;
+       case(amount_fat<200):
+       this.fat = 'badge-warning';
+       break;
+       case(amount_fat>=200):
+       this.fat = 'badge-danger';
+       break;
+     }
+    
+     switch(true)
+     {
+       case(amount_protein<50):
+       this.protein = 'badge-success';
+       break;
+       case(amount_protein<100):
+       this.protein = 'badge-primary';
+       break;
+       case(amount_protein<200):
+       this.protein = 'badge-warning';
+       break;
+       case(amount_protein>=200):
+       this.protein = 'badge-danger';
+       break;
+     }
+    
     
     if (this.recipe.userId) {
       this.auth.getUser(this.recipe.userId).subscribe((user: User) => {

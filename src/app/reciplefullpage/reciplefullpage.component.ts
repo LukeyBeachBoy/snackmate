@@ -10,6 +10,7 @@ import { firestore, auth } from 'firebase/app';
 import * as moment from 'moment';
 import { of } from 'rxjs';
 import { defineBase } from '@angular/core/src/render3';
+import { RecipeService } from '../services/recipe.service';
 
 @Component({
   selector: 'app-reciplefullpage',
@@ -18,12 +19,35 @@ import { defineBase } from '@angular/core/src/render3';
 })
 export class ReciplefullpageComponent implements OnInit {
 
+  @Input() recipe: Recipe;
+  recipeImageURL: string;
+  userImageURL: string;
+  user: User;
+  calories: string;
+  carbs: string;
+  fat: string;
+  protein: string;
+  test: number;
+
   constructor(public storage: AngularFireStorage, private auth: AuthService, private route: ActivatedRoute, private db: AngularFirestore ) { }
 
   ngOnInit() {
-   const para = this.route.params;
+    this.route.params.subscribe(params =>
+      this.auth.getUser(params.id).subscribe((user) => {
+        this.user = user as User;
+     
+      const hee =  this.db.collection('recipes', res => res.where('recipeId', '==', params.id))
+.snapshotChanges().subscribe(res=>{
+  console.log(res);
+ 
+  this.test = res.length;
+  
+ 
+});
 
-    console.log(para.id);
+      })
+    );
+   
   }
 
 }

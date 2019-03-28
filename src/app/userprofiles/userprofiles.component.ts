@@ -41,8 +41,11 @@ export class UserprofilesComponent implements OnInit {
 .snapshotChanges().subscribe(res=>{
   console.log(res);
   this.recipeCount = res.length;
+  
+  
+
 });
-//console.log(hee);
+
 
       })
     );
