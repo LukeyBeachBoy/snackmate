@@ -1,16 +1,19 @@
 @import "../../../styles";
 
+h1 {
+  font-size: 1.5em !important;
+  padding-top: 10px;
+}
 a {
   margin: 0.5em;
   color: #fff !important;
 }
 
 #instructionInput {
-  padding-top: 25px;
+  padding-top: 10px;
   justify-content: flex-start;
   line-height: 24px;
   margin: 0px 0px 16px;
-  padding: 25px 0px 0px;
   text-align: center;
   align-items: center;
   display: flex;
