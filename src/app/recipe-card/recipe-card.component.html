@@ -1,6 +1,6 @@
 <div class="recipeCard mx-auto">
   <div class="recipeHeader">
-    <h6>{{ recipe.name || 'No name' }}</h6>
+    <h6>	 <a routerLink="recipe/{{ recipe?.recipeId }}">{{ recipe.name || 'No name' }}</a></h6>
   </div>
   <img id="recipePic" class="img-fluid" src="{{ recipeImageURL }}" alt="" />
   <div class="recipeBody">
