@@ -24,25 +24,47 @@ import { stringify } from 'querystring';
   styleUrls: ['./userprofiles.component.scss']
 })
 export class UserprofilesComponent implements OnInit {
-
+  prevRecipes = [];
+  timestamps = [];
   userImageURL: string;
   user: User;
   recipeCount: number;
+  
   constructor(public storage: AngularFireStorage, private auth: AuthService, private route: ActivatedRoute, private db: AngularFirestore ) {
   
   }
 
   ngOnInit() {
+    
     this.route.params.subscribe(params =>
       this.auth.getUser(params.id).subscribe((user) => {
         this.user = user as User;
         console.log(this.user.uid);
-      const hee=  this.db.collection('recipes', res => res.where('userId', '==', this.user.uid))
-.snapshotChanges().subscribe(res=>{
+      const hee=  this.db.collection('recipes', res => res.where('userId', '==', this.user.uid).orderBy('date', 'desc'))
+.valueChanges().subscribe(res=>{
   console.log(res);
   this.recipeCount = res.length;
+
+ this.prevRecipes=res;
+ console.log(this.prevRecipes);
+
+ this.prevRecipes.forEach(recipe => {
+  if (recipe.date) {
+    /* Cheeky way to get the date uploaded from firestore (don't trust the users)
+     then parse it as a timestamp, then convert it to a text equivalent */
+    const timestamp: firestore.Timestamp = new firestore.Timestamp(
+      ((recipe.date as unknown) as firestore.Timestamp).seconds,
+      ((recipe.date as unknown) as firestore.Timestamp).nanoseconds
+    );
+    recipe.date = moment(timestamp.toDate()).fromNow();
+    this.timestamps.push(recipe);
+    console.log(this.timestamps)
+  }
   
-  
+ } ) 
+
+
+
 
 });
 

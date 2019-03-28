@@ -15,31 +15,16 @@
     <div class="col-sm">
 	<h5>{{user?.displayName}}'s latest recipes</h5>
 <div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+  <a *ngFor="let recipe of prevRecipes; let i = index" href="#" routerLink ="../../recipe/{{recipe?.recipeId}}" class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">Butter Chicken</h5>
-      <small>3 days ago</small>
+      <h5 class="mb-1">{{recipe?.name}}</h5>
+      <small>{{timestamps[i].date}}</small>
     </div>
     <p class="mb-1">A beautiful Indian butter chicken curry that ticks all of the boxes</p>
-    <small><span class="badge badge-pill badge-primary">1624 calories</span></small>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">Katsu Chicken Curry</h5>
-      <small class="text-muted">a month ago</small>
-    </div>
-    <p class="mb-1">Dolche Vitas own Katsu Chicken Curry, beautifully presented and now you can make it at home!</p>
-    <small class="text-muted"><span class="badge badge-pill badge-primary">811 calories</span></small>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">Healthy Tofu Snack</h5>
-      <small class="text-muted">a month ago</small>
-    </div>
-    <p class="mb-1">The best tofu recipe will make lovers out of even the most staunch tofu haters! Seven easy ingredients to create this snack!</p>
-    <small class="text-muted"><span class="badge badge-pill badge-primary">392 calories</span></small>
+    <small><span class="badge badge-pill badge-primary">{{recipe?.nutrition.calories}} calories</span></small>
   </a>
 </div>
+<br/>
     </div>
 
   </div>
