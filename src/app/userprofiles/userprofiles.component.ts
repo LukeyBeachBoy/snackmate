@@ -16,6 +16,7 @@ import { firestore, auth } from 'firebase/app';
 import * as moment from 'moment';
 import { of } from 'rxjs';
 import { defineBase } from '@angular/core/src/render3';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-userprofiles',
@@ -26,34 +27,29 @@ export class UserprofilesComponent implements OnInit {
 
   userImageURL: string;
   user: User;
+  recipeCount: number;
   constructor(public storage: AngularFireStorage, private auth: AuthService, private route: ActivatedRoute, private db: AngularFirestore ) {
-    
+  
   }
 
   ngOnInit() {
     this.route.params.subscribe(params =>
       this.auth.getUser(params.id).subscribe((user) => {
         this.user = user as User;
-        //console.log(this.user);
+        console.log(this.user.uid);
+      const hee=  this.db.collection('recipes', res => res.where('userId', '==', this.user.uid))
+.snapshotChanges().subscribe(res=>{
+  console.log(res);
+  this.recipeCount = res.length;
+});
+//console.log(hee);
+
       })
     );
-    this.db.collection('recipes').get().subscribe(snap => {
-     // console.log(snap.docs);
-
-     // const usersRecipes = snap.docs.filter(doc => [0]._document.proto.fields.userId == this.user.uid);
-     // console.log(this.user.uid);
-     // console.log(usersRecipes);
-
-     
-  });
+   
 
 
- const hello = this.db.collection('recipes', ref => ref.where('userId', '==', 'bnBY9EU5mveCfhmIgmRKUzefHEk2'));
- console.log(hello);
-   // this.db.collection('recipes').doc().collection('userId')
-   this.db.collection('recipes').doc('').get().then(function(doc) {
-    console.log(doc.data().name);
-  });
+ 
   }
 
 }

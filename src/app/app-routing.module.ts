@@ -12,6 +12,8 @@ import { RecipeBuilderComponent } from './recipe-builder/recipe-builder.componen
 import { RecipeDetailsComponent } from './recipe-builder/recipe-details/recipe-details.component';
 import { RecipeInitialComponent } from './recipe-builder/recipe-initial/recipe-initial.component';
 import { UserprofilesComponent } from './userprofiles/userprofiles.component';
+import { ReciplefullpageComponent } from './reciplefullpage/reciplefullpage.component';
+
 
 const routes: Routes = [
   { path: '', component: FeedComponent },
@@ -32,6 +34,7 @@ const routes: Routes = [
     ]
   },
    { path: 'user/:id', component: UserprofilesComponent },
+   { path: 'recipe/:id', component: ReciplefullpageComponent },
   { path: '**', redirectTo: '' }
   
 ];

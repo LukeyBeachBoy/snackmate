@@ -29,6 +29,7 @@ import { RecipeInitialComponent } from './recipe-builder/recipe-initial/recipe-i
 import { NutritionixService } from './services/nutritionix.service';
 import { RecipeFinalComponent } from './recipe-builder/recipe-final/recipe-final.component';
 import { UserprofilesComponent } from './userprofiles/userprofiles.component';
+import { ReciplefullpageComponent } from './reciplefullpage/reciplefullpage.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { UserprofilesComponent } from './userprofiles/userprofiles.component';
     RecipeDetailsComponent,
     RecipeInitialComponent,
     RecipeFinalComponent,
-    UserprofilesComponent
+    UserprofilesComponent,
+    ReciplefullpageComponent
   ],
   imports: [
     BrowserModule,
