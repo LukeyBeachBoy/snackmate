@@ -21,6 +21,7 @@ export class ReciplefullpageComponent implements OnInit {
 
   @Input() recipe: Recipe;
   instructions = [];
+  ingredients = [];
   recipeImageURL: string;
   userImageURL: string;
   user: User;
@@ -40,7 +41,8 @@ export class ReciplefullpageComponent implements OnInit {
 .valueChanges().subscribe(<Recipe>(res)=>{
   this.recipe=res[0];
   this.instructions = res[0].instructions;
-  console.log(this.instructions);
+  this.ingredients = res[0].ingredients;
+
 
   this.storage
           .ref(`recipes/${this.recipe.recipeId}.jpg`)
