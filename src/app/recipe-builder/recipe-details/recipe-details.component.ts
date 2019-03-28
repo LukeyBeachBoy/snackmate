@@ -130,6 +130,7 @@ export class RecipeDetailsComponent implements OnInit {
     } else {
       const currentRecipe: Recipe = this.builder.getRecipe();
       currentRecipe.nutrition = this.totalNutrition;
+      currentRecipe.ingredients = this.ingredients;
       this.builder.updateRecipe(currentRecipe);
       this.router.navigate(['/new-recipe/instructions']);
     }
