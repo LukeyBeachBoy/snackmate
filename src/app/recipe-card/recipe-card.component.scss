@@ -1,11 +1,11 @@
-$primaryColour: #e26d6d;
-$darkGrey: #3f3f3fd1;
+@import '../../styles';
 $mobileWidth: 450px;
 
 hr {
   margin-top: 0.4rem;
 }
 .recipeCard {
+  box-shadow: 0px 8px 10px 3px #00000021;
   display: flex;
   flex-direction: column;
   max-width: 332px;
@@ -17,6 +17,7 @@ hr {
   .recipeHeader {
     border-radius: 15px 15px 0 0;
     text-align: center;
+    box-shadow: inset 0px 8px 10px 0px rgba(0, 0, 0, 0.02);
     background-color: $primaryColour;
     h6 {
       margin: 0;
@@ -29,10 +30,12 @@ hr {
     margin: 0.5em -1.2em;
   }
 }
+
 #recipePic {
-  height: 11.1em;
   object-fit: cover;
-  margin-bottom: 0.4em;
+  width: 332px;
+  height: 177.594px;
+  margin-bottom: 0.5em;
 }
 
 .userDate {
@@ -71,7 +74,7 @@ hr {
 #wrapper {
   display: grid;
   grid-template-columns: 62% 38%;
-  grid-template-rows: 7.8em auto;
+  grid-template-rows: 8.4em auto;
   grid-template-areas:
     'description nutrition'
     'allergens nutrition';
@@ -97,7 +100,7 @@ hr {
   .nutritionGenie {
     border: 0.5px solid #00000017;
     border-radius: 15px;
-    height: 62%;
+    height: 58%;
     width: 85%;
     grid-area: nutrition;
     display: flex;
@@ -108,7 +111,7 @@ hr {
     ul {
       margin: 0 0.5em;
       padding: 0;
-      align-self: flex-start;
+      align-self: center;
       li {
         margin: 0.5em 0;
         color: $darkGrey;

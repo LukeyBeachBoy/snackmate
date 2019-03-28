@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'TwCenMT';
+  src: url(../fonts/TWCenMT.ttf);
+}
+@font-face {
+  font-family: 'TwCenMT_Bold';
+  src: url(../fonts/TWCenMT_Bold.ttf);
+}
 .container-fluid {
   min-height: 100%;
   background-color: #f3f3f3;
@@ -5,4 +13,12 @@
 }
 #main {
   transition: margin-right 0.5s;
+}
+
+* {
+  box-sizing: border-box;
+}
+body,
+html {
+  height: 100%;
 }

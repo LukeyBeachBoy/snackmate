@@ -1,0 +1,66 @@
+@import "../../../styles";
+
+a {
+  margin: 0.5em;
+  color: #fff !important;
+}
+
+#instructionInput {
+  padding-top: 25px;
+  justify-content: flex-start;
+  line-height: 24px;
+  margin: 0px 0px 16px;
+  padding: 25px 0px 0px;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  i {
+    color: #007bff;
+    font-size: 2.4em;
+    line-height: 17px;
+    margin: 0px 0px 0px 10px;
+    cursor: pointer;
+  }
+}
+
+.container {
+  background: white;
+  margin-top: 0.5em;
+  border-radius: 12px;
+  box-shadow: 0 4px 7px 3px #00000026;
+}
+
+.instructions {
+  border: 1px dotted #0000002e;
+}
+.instruction {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 14% 80% 6%;
+  font-family: "TWCenMT";
+  font-size: 1.6em;
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 0.5em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.157);
+  #step {
+    color: $primaryColour;
+  }
+  #instructionText {
+    overflow-wrap: break-word;
+    text-align: left;
+  }
+  .move {
+    display: flex;
+    flex-direction: column;
+  }
+  i {
+    color: #e64a4d;
+    cursor: pointer;
+    margin: 0.05em 0;
+  }
+  .arrow {
+    color: rgba(59, 59, 59, 0.78);
+    font-size: 0.8em;
+  }
+}

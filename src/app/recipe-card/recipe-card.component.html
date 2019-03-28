@@ -2,7 +2,13 @@
   <div class="recipeHeader">
     <h6>	 <a routerLink="recipe/{{ recipe?.recipeId }}">{{ recipe.name || 'No name' }}</a></h6>
   </div>
-  <img id="recipePic" class="img-fluid" src="{{ recipeImageURL }}" alt="" />
+  <img
+    id="recipePic"
+    (load)="display()"
+    class="img-fluid"
+    src="{{ recipeImageURL }}"
+    alt=""
+  />
   <div class="recipeBody">
     <div class="userDate">
       <img class="img-fluid" id="userPic" src="{{ userImageURL }}" alt="" />
@@ -51,8 +57,8 @@
     <div class="recipeFooter">
       <div class="social">
         <div class="likes">
-          <i class="fas fa-heart"></i>
-          <p class="small"></p>
+          <i class="fas fa-heart" (click)="onLike()"></i>
+          <p class="small">{{ recipe.likes }}</p>
         </div>
         <div class="comments">
           <i class="fas fa-comment-alt"></i>
