@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-xs-12">
       <h2>{{recipe?.name}}</h2>
+      
       <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -17,10 +18,10 @@
      
  
     </div>
-    <div class="col">
+    <div class="col-xs-12">
      <br/>
         <h5>Description</h5>
-        <div class="card" style="width: 25rem;">
+        <div class="card">
             <ul class="list-group list-group-flush">
               <li class="list-group-item">{{recipe?.description}}</li>
               
@@ -28,7 +29,7 @@
           </div>
           <br/>
           <h5>Ingredients</h5>
-          <div class="card" style="width: 25rem;">
+          <div class="card">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item"  *ngFor="let ingredient of ingredients">{{ingredient.name}} ({{ingredient.amount}})</li>
                 
@@ -36,7 +37,7 @@
             </div>
             <br/>
      <h5>Instructions</h5>
-     <div class="card" style="width: 25rem;">
+     <div class="card">
       <ul class="list-group list-group-flush">
         <li *ngFor="let instruction of instructions; let i = index" class="list-group-item"><b>Step {{i + 1}}: </b>{{instruction}}</li>
    
